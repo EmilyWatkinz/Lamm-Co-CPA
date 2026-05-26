@@ -1,11 +1,10 @@
 
 import './App.css';
 import React, { useEffect, useState, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [showScroll, setShowScroll] = useState(false);
-  const location = useLocation();
   const [animate, setAnimate] = useState(false);
   const [locationsVisible, setLocationsVisible] = useState(false);
   const locationsRef = useRef(null);
@@ -20,19 +19,6 @@ function App() {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  // Smooth scroll to services section if on home, else go home and then scroll
-  const handleServicesClick = (e) => {
-    e.preventDefault();
-    if (location.pathname === "/") {
-      const section = document.getElementById("services");
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      window.location.href = "/#services";
-    }
   };
 
   useEffect(() => {
@@ -59,7 +45,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App classy-about-bg">
+    <div className="App classy-about-bg home-bg">
       <nav className="navbar">
         <div className="nav-logo-group">
           <img src="/Lamm+-+Co+LOGO-162w.webp" alt="Lamm & Company Logo" className="nav-logo-img" />
@@ -67,7 +53,7 @@ function App() {
         </div>
         <ul className="nav-list nav-right">
           <li className="nav-item"><Link to="/about">About</Link></li>
-          <li className="nav-item"><a href="#services" onClick={handleServicesClick}>Services</a></li>
+          <li className="nav-item"><Link to="/services">Services</Link></li>
           <li className="nav-item"><a href="#resources">Resources</a></li>
           <li className="nav-item"><a href="#locations">Locations</a></li>
           <li className="nav-item"><a href="#reviews">Reviews</a></li>
@@ -79,26 +65,75 @@ function App() {
           <h1 className={`hero-main-heading${animate ? ' fade-in-bottom' : ''}`}>Lamm & Company</h1>
           <h2 className={animate ? 'fade-in-bottom' : ''}>Expert Accounting for Idaho & Beyond</h2>
           <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but anywhere in the world. Six locations, one commitment: your financial success—wherever you are.</p>
-          <a href="#services" className={`cta-btn${animate ? ' fade-in-bottom' : ''}`} onClick={handleServicesClick}>Explore Our Services</a>
+          <Link to="/services" className={`cta-btn${animate ? ' fade-in-bottom' : ''}`}>Explore Our Services</Link>
         </section>
         <section className="locations-section" id="locations" ref={locationsRef}>
           <h2 className={locationsVisible ? 'fade-in-bottom' : ''}>Our Idaho Locations</h2>
           <div className="locations-list">
-            <div className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}>McCall</div>
-            <div className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}>Grangeville</div>
-            <div className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}>Emmett</div>
-            <div className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}>Weiser</div>
-            <div className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}>Fruitland</div>
-            <div className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}>Kuna</div>
+            <a
+              href="https://share.google/ZHSlrttd60SkRzbQG"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}
+            >
+              McCall
+            </a>
+            <a
+              href="https://share.google/YvDbl3CTSWZlQ9vcX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}
+            >
+              Grangeville
+            </a>
+            <a
+              href="https://share.google/sv1g7A3yNR8OGALoF"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}
+            >
+              Fruitland
+            </a>
+            <a
+              href="https://share.google/kTxCndtOhKjkrSdLr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}
+            >
+              Emmett
+            </a>
+            <a
+              href="https://share.google/FYp4TdM4WrTPmQjVA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}
+            >
+              Weiser
+            </a>
+            <a
+              href="https://share.google/wEQ4Obz6sRiR2Rnvj"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}
+            >
+              Kuna
+            </a>
           </div>
         </section>
       </main>
       <footer className="footer">
-        &copy; {new Date().getFullYear()} Lamm & Company. All rights reserved.
+        &copy; {new Date().getFullYear()} Lamm & Company. All rights reserved.{' '}
+        <a href="https://www.facebook.com/lammcocpa/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook" title="Facebook">
+          <span className="social-icon social-icon-fb" aria-hidden="true">f</span>
+        </a>
+        {' '}
+        <a href="https://www.linkedin.com/company/lamm-&-company-cpa/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn" title="LinkedIn">
+          <span className="social-icon social-icon-in" aria-hidden="true">in</span>
+        </a>
       </footer>
       {showScroll && (
         <button className="scroll-to-top" onClick={scrollToTop} aria-label="Scroll to top">
-          &#8593;
+          <span className="scroll-arrow">&#8593;</span>
         </button>
       )}
     </div>
