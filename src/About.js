@@ -131,8 +131,23 @@ function About() {
         )}
         {selectedTeam === 'Accounting Team' && (
           <div className="team-cards-container slow-fade" style={{ flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', display: 'flex', marginTop: '2rem' }}>
-            {/* Rebecca Balken */}
+            {/* Jolene Johnson */}
             <div className="team-card slow-fade-up delay-0">
+              <img src="/Jolene-Pic.webp" alt="Jolene Johnson" className="team-card-img" />
+              <div className="team-card-title">Jolene Johnson</div>
+              <div className="team-card-role">Accounting Specialist</div>
+              <div className="team-card-bio">
+                {[
+                  "Jolene has been with Lamm & Company for six years.",
+                  "Her favorite thing about working at the company is employee development.",
+                  "A fun fact about Jolene is that she has had so many stitches in the past that they had to count boxes rather than individual stitches."
+                ].map((para, i) => (
+                  <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
+                ))}
+              </div>
+            </div>
+            {/* Rebecca Balken */}
+            <div className="team-card slow-fade-up delay-1">
               <img src="/Rebecca-Pic.webp" alt="Rebecca Balken" className="team-card-img" />
               <div className="team-card-title">Rebecca Balken</div>
               <div className="team-card-role">Accounting Associate III</div>
@@ -147,7 +162,7 @@ function About() {
               </div>
             </div>
             {/* Kelsey Ritch */}
-            <div className="team-card slow-fade-up delay-1">
+            <div className="team-card slow-fade-up delay-2">
               <img src="/Kelsey-Pic.webp" alt="Kelsey Ritch" className="team-card-img" />
               <div className="team-card-title">Kelsey Ritch</div>
               <div className="team-card-role">Accounting Associate II</div>
@@ -162,7 +177,7 @@ function About() {
               </div>
             </div>
             {/* Mayson Bell */}
-            <div className="team-card slow-fade-up delay-2">
+            <div className="team-card slow-fade-up delay-3">
               <img src="/Unknown Man.jpg" alt="Mayson Bell" className="team-card-img" />
               <div className="team-card-title">Mayson Bell</div>
               <div className="team-card-role">Accounting Associate I</div>
@@ -171,21 +186,6 @@ function About() {
                   "Mayson began working for Lamm & Co in 2024 while continuing his education and growing his experience in accounting and bookkeeping.",
                   "His favorite thing about working at Lamm & Company is the opportunity to continue learning, solve problems, and work alongside a great team while helping clients and businesses succeed.",
                   "Outside of work he enjoys working on vehicles, riding dirt bikes, and spending time with his family."
-                ].map((para, i) => (
-                  <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
-                ))}
-              </div>
-            </div>
-            {/* Jolene Johnson */}
-            <div className="team-card slow-fade-up delay-3">
-              <img src="/Jolene-Pic.webp" alt="Jolene Johnson" className="team-card-img" />
-              <div className="team-card-title">Jolene Johnson</div>
-              <div className="team-card-role">Accounting Specialist</div>
-              <div className="team-card-bio">
-                {[
-                  "Jolene has been with Lamm & Company for six years.",
-                  "Her favorite thing about working at the company is employee development.",
-                  "A fun fact about Jolene is that she has had so many stitches in the past that they had to count boxes rather than individual stitches."
                 ].map((para, i) => (
                   <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
                 ))}
