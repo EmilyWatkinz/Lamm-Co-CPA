@@ -117,10 +117,10 @@ function Services() {
         <ul className="nav-list nav-right">
           <li className="nav-item"><Link to="/about">About</Link></li>
           <li className="nav-item"><Link to="/services">Services</Link></li>
-          <li className="nav-item"><a href="#resources">Resources</a></li>
-          <li className="nav-item"><a href="#locations">Locations</a></li>
-          <li className="nav-item"><a href="#reviews">Reviews</a></li>
-          <li className="nav-item"><a href="#blog">Blog</a></li>
+          <li className="nav-item"><Link to="/resources">Resources</Link></li>
+          <li className="nav-item"><a href="/#locations">Locations</a></li>
+          <li className="nav-item"><Link to="/reviews">Reviews</Link></li>
+          <li className="nav-item"><Link to="/resources#blog">Blog</Link></li>
         </ul>
       </nav>
 

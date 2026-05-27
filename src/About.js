@@ -59,10 +59,10 @@ function About() {
         <ul className="nav-list nav-right">
           <li className="nav-item"><Link to="/about">About</Link></li>
           <li className="nav-item"><Link to="/services">Services</Link></li>
-          <li className="nav-item"><a href="#resources">Resources</a></li>
-          <li className="nav-item"><a href="#locations">Locations</a></li>
-          <li className="nav-item"><a href="#reviews">Reviews</a></li>
-          <li className="nav-item"><a href="#blog">Blog</a></li>
+          <li className="nav-item"><Link to="/resources">Resources</Link></li>
+          <li className="nav-item"><a href="/#locations">Locations</a></li>
+          <li className="nav-item"><Link to="/reviews">Reviews</Link></li>
+          <li className="nav-item"><Link to="/resources#blog">Blog</Link></li>
         </ul>
       </nav>
       <div className="about-content">
@@ -203,9 +203,10 @@ function About() {
               <div className="team-card-role">Senior Associate | Enrolled Agent</div>
               <div className="team-card-bio">
                 {[
-                  "Tammi has been with Lamm & Company for several years.",
-                  "She is an Enrolled Agent and Senior Associate, specializing in tax matters.",
-                  "Fun fact: Tammi loves hiking and spending time with her family."
+                  "Tammi has been with Lamm & Company for almost four years.",
+                  "She loves working with the company because she loves working with a team that cares about their clients.",
+                  "Outside the office Tammi owns and operates a Kettle Corn booth.",
+                  "In her free time she is either at a hotspring or rockhounding."
                 ].map((para, i) => (
                   <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
                 ))}

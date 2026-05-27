@@ -471,6 +471,35 @@ html, body {
   color: #900C3F;
 }
 
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.hero-cta-group .cta-btn {
+  margin-top: 0;
+  height: auto;
+  min-height: 0;
+  line-height: 1.2;
+  padding: 0.58rem 1.18rem;
+  font-size: 1.02rem;
+  border-radius: 1.08rem;
+}
+
+.cta-btn-secondary {
+  background: #c8a64a;
+  border: none;
+  color: #900C3F;
+}
+
+.cta-btn-secondary:hover,
+.cta-btn-secondary:focus {
+  background: #d3b567;
+  color: #900C3F;
+}
+
 /* Locations Section */
 .locations-section {
   background: #fff;
@@ -513,6 +542,195 @@ html, body {
 .location-card:hover, .location-card:focus {
   box-shadow: 0 4px 16px rgba(144,12,63,0.12);
   border-color: #900C3F;
+}
+
+.reviews-section {
+  background: #fff8eb;
+  padding: 2.4rem 2rem 3rem 2rem;
+  text-align: center;
+}
+
+.reviews-section h2 {
+  color: #900C3F;
+  font-size: 2rem;
+  margin: 0 0 1.3rem 0;
+  font-weight: 700;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.reviews-carousel {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.reviews-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.reviews-track {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.review-card-carousel {
+  flex: 0 0 calc((100% - 2rem) / 3);
+  min-height: 220px;
+  box-sizing: border-box;
+  padding: 0.85rem 0.85rem 0.95rem 0.85rem;
+}
+
+.review-carousel-arrow {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid #d5b969;
+  background: #fff;
+  color: #7a1837;
+  font-size: 1.35rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(74, 13, 35, 0.12);
+}
+
+.review-carousel-arrow:hover,
+.review-carousel-arrow:focus {
+  background: #fdf4da;
+  color: #5f0f2a;
+}
+
+.review-carousel-meta {
+  margin-top: 0.8rem;
+  color: #7a1837;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.review-card {
+  background: #fff;
+  border: 1px solid #ead28a;
+  border-left: 6px solid #900C3F;
+  border-radius: 0.9rem;
+  padding: 1rem 1rem 1.1rem 1rem;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(74, 13, 35, 0.08);
+}
+
+.review-card p {
+  margin: 0;
+  color: #4a3a3f;
+  line-height: 1.55;
+  font-size: 1rem;
+}
+
+.review-card-carousel p {
+  font-size: 0.91rem;
+  line-height: 1.45;
+}
+
+.review-author {
+  margin-top: 0.8rem;
+  color: #7a1837;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.review-card-carousel .review-author {
+  font-size: 0.88rem;
+  margin-top: 0.65rem;
+}
+
+.review-stars {
+  color: #d4ab37;
+  letter-spacing: 0.12rem;
+  font-size: 1.08rem;
+  margin-bottom: 0.55rem;
+}
+
+.review-card-carousel .review-stars {
+  font-size: 0.98rem;
+  margin-bottom: 0.4rem;
+}
+
+.review-actions {
+  margin-top: 1.3rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.review-action-btn {
+  background: #c8a64a;
+  color: #900C3F;
+  border: none;
+  border-radius: 0.9rem;
+  padding: 0.55rem 1.15rem;
+  font-size: 0.96rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(144,12,63,0.08);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.review-action-btn:hover,
+.review-action-btn:focus {
+  background: #d3b567;
+  color: #900C3F;
+}
+
+.review-action-btn-secondary {
+  background: #c8a64a;
+}
+
+.reviews-page-wrap {
+  max-width: 1150px;
+  margin: 2.2rem auto 0 auto;
+  padding: 0 1.4rem 2.5rem 1.4rem;
+}
+
+.reviews-hero {
+  background: linear-gradient(135deg, rgba(144, 12, 63, 0.96), rgba(116, 12, 49, 0.96));
+  color: #fff;
+  border-radius: 1rem;
+  padding: 2rem 2rem 1.8rem 2rem;
+  box-shadow: 0 10px 24px rgba(76, 8, 32, 0.2);
+  border: 1px solid rgba(230, 194, 0, 0.35);
+  margin-bottom: 1.4rem;
+}
+
+.reviews-hero h1 {
+  margin: 0 0 0.7rem 0;
+  font-size: 2.2rem;
+  letter-spacing: 0.5px;
+}
+
+.reviews-hero p {
+  margin: 0;
+  max-width: 820px;
+  color: #f6ecd1;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.reviews-section-page {
+  border-radius: 1rem;
+  border: 1px solid #f1deab;
 }
 
 /* Footer */
@@ -572,6 +790,311 @@ html, body {
 
 .services-page {
   min-height: 100vh;
+}
+
+.blog-page-wrap {
+  max-width: 1150px;
+  margin: 2.2rem auto 0 auto;
+  padding: 0 1.4rem 2.5rem 1.4rem;
+}
+
+.blog-page-hero {
+  background: linear-gradient(135deg, rgba(144, 12, 63, 0.96), rgba(116, 12, 49, 0.96));
+  color: #fff;
+  border-radius: 1rem;
+  padding: 2rem 2rem 1.8rem 2rem;
+  box-shadow: 0 10px 24px rgba(76, 8, 32, 0.2);
+  border: 1px solid rgba(230, 194, 0, 0.35);
+}
+
+.blog-page-hero h1 {
+  margin: 0 0 0.7rem 0;
+  font-size: 2.2rem;
+  letter-spacing: 0.5px;
+}
+
+.blog-page-hero p {
+  margin: 0;
+  max-width: 760px;
+  color: #f6ecd1;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.blog-posts-grid {
+  margin-top: 1.4rem;
+}
+
+.blog-post-card {
+  background: #fff;
+  border: 1px solid #ead28a;
+  border-left: 6px solid #900C3F;
+  border-radius: 1rem;
+  padding: 1.4rem;
+  box-shadow: 0 5px 16px rgba(74, 13, 35, 0.09);
+}
+
+.blog-post-card h2 {
+  margin: 0 0 0.75rem 0;
+  color: #771033;
+  font-size: 1.45rem;
+}
+
+.blog-post-card p {
+  margin: 0;
+  color: #4a3a3f;
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
+.resources-page {
+  min-height: 100vh;
+}
+
+.resources-wrap {
+  max-width: 1150px;
+  margin: 2.2rem auto 0 auto;
+  padding: 0 1.4rem 2.5rem 1.4rem;
+}
+
+.resources-hero {
+  background: linear-gradient(135deg, rgba(144, 12, 63, 0.96), rgba(116, 12, 49, 0.96));
+  color: #fff;
+  border-radius: 1rem;
+  padding: 2rem 2rem 1.8rem 2rem;
+  box-shadow: 0 10px 24px rgba(76, 8, 32, 0.2);
+  border: 1px solid rgba(230, 194, 0, 0.35);
+}
+
+.resources-hero h1 {
+  margin: 0 0 0.7rem 0;
+  font-size: 2.2rem;
+  letter-spacing: 0.5px;
+}
+
+.resources-hero p {
+  margin: 0;
+  max-width: 760px;
+  color: #f6ecd1;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.15rem;
+  margin-top: 1.4rem;
+}
+
+.resource-card {
+  background: #fff;
+  border: 1px solid #ead28a;
+  border-left: 6px solid #900C3F;
+  border-radius: 1rem;
+  padding: 1.4rem;
+  box-shadow: 0 5px 16px rgba(74, 13, 35, 0.09);
+}
+
+.resource-card h2 {
+  margin: 0 0 0.85rem 0;
+  color: #771033;
+  font-size: 1.95rem;
+}
+
+.resource-card-img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 0.65rem;
+  border: 1px solid #eddba1;
+  margin-bottom: 0.95rem;
+  display: block;
+}
+
+.refund-links {
+  margin: 0.1rem 0 0.9rem 1.1rem;
+  padding: 0;
+}
+
+.refund-links-inline {
+  margin: 0 0 0.95rem 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.refund-links li {
+  margin: 0.35rem 0;
+}
+
+.refund-links-inline li {
+  margin: 0;
+}
+
+.refund-links a {
+  color: #900C3F;
+  font-weight: 600;
+}
+
+.refund-links a:hover,
+.refund-links a:focus {
+  color: #6f1028;
+}
+
+.resource-placeholder-text {
+  margin: 0;
+  color: #4a3a3f;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.resource-image-placeholder {
+  margin-top: 0.8rem;
+  min-height: 200px;
+  border: 2px dashed #d8bc69;
+  border-radius: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #866f35;
+  font-weight: 600;
+  background: #fff9ea;
+}
+
+.track-refund-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.track-refund-img {
+  max-width: 390px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.track-refund-content {
+  flex: 0 1 520px;
+  max-width: 520px;
+  min-width: 250px;
+}
+
+#track-refund h2 {
+  margin-bottom: 1rem;
+}
+
+#track-refund .resource-placeholder-text {
+  font-size: 1.24rem;
+  line-height: 1.85;
+}
+
+.tax-planning-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.tax-planning-img {
+  max-width: 390px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.tax-planning-content {
+  flex: 0 1 520px;
+  max-width: 520px;
+  min-width: 250px;
+}
+
+.secure-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  flex-wrap: nowrap;
+}
+
+.secure-img {
+  max-width: 390px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.secure-content {
+  flex: 0 1 520px;
+  max-width: 520px;
+  min-width: 250px;
+}
+
+.pay-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.pay-img {
+  max-width: 390px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.pay-content {
+  flex: 0 1 520px;
+  max-width: 520px;
+  min-width: 250px;
+}
+
+#pay-for-services .resource-placeholder-text {
+  font-size: 1.24rem;
+  line-height: 1.85;
+}
+
+#secure-document-upload .resource-placeholder-text {
+  font-size: 1.24rem;
+  line-height: 1.85;
+}
+
+.blog-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.blog-img {
+  max-width: 390px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.blog-content {
+  flex: 0 1 520px;
+  max-width: 520px;
+  min-width: 250px;
+}
+
+#blog .resource-placeholder-text {
+  font-size: 1.24rem;
+  line-height: 1.85;
+}
+
+.blog-cta-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #900C3F;
+  font-size: 1.12rem;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.blog-cta-link:hover,
+.blog-cta-link:focus {
+  color: #6f1028;
+}
+
+#tax-planning-2026 .resource-placeholder-text {
+  font-size: 1.24rem;
+  line-height: 1.85;
 }
 
 .services-wrap {
@@ -686,6 +1209,91 @@ html, body {
 }
 
 @media (max-width: 700px) {
+  .reviews-carousel {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .reviews-track {
+    gap: 0.8rem;
+    transition-duration: 0.45s;
+  }
+
+  .review-card-carousel {
+    flex-basis: 100%;
+    min-height: 0;
+  }
+
+  .review-carousel-arrow {
+    width: 42px;
+    height: 42px;
+    justify-self: center;
+  }
+
+  .track-refund-layout {
+    flex-direction: column;
+  }
+
+  .track-refund-img {
+    max-width: 100%;
+  }
+
+  .tax-planning-layout {
+    flex-direction: column;
+  }
+
+  .tax-planning-img {
+    max-width: 100%;
+  }
+
+  .secure-layout {
+    flex-direction: column;
+  }
+
+  .secure-img {
+    max-width: 100%;
+  }
+
+  .pay-layout {
+    flex-direction: column;
+  }
+
+  .pay-img {
+    max-width: 100%;
+  }
+
+  .blog-layout {
+    flex-direction: column;
+  }
+
+  .blog-img {
+    max-width: 100%;
+  }
+
+  .resources-hero {
+    padding: 1.5rem 1.1rem 1.3rem 1.1rem;
+  }
+
+  .resources-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .reviews-hero {
+    padding: 1.5rem 1.1rem 1.3rem 1.1rem;
+  }
+
+  .reviews-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .blog-page-hero {
+    padding: 1.5rem 1.1rem 1.3rem 1.1rem;
+  }
+
+  .blog-page-hero h1 {
+    font-size: 1.75rem;
+  }
+
   .services-hero {
     padding: 1.5rem 1.1rem 1.3rem 1.1rem;
   }

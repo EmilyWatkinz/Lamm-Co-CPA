@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import About from './About';
 import Services from './Services';
+import Resources from './Resources';
+import Blog from './Blog';
+import SecureUpload from './SecureUpload';
+import PayBill from './PayBill';
+import Reviews from './Reviews';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
@@ -15,6 +20,11 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/secure-upload" element={<SecureUpload />} />
+        <Route path="/pay-bill" element={<PayBill />} />
+        <Route path="/reviews" element={<Reviews />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

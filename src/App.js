@@ -54,10 +54,10 @@ function App() {
         <ul className="nav-list nav-right">
           <li className="nav-item"><Link to="/about">About</Link></li>
           <li className="nav-item"><Link to="/services">Services</Link></li>
-          <li className="nav-item"><a href="#resources">Resources</a></li>
+          <li className="nav-item"><Link to="/resources">Resources</Link></li>
           <li className="nav-item"><a href="#locations">Locations</a></li>
-          <li className="nav-item"><a href="#reviews">Reviews</a></li>
-          <li className="nav-item"><a href="#blog">Blog</a></li>
+          <li className="nav-item"><Link to="/reviews">Reviews</Link></li>
+          <li className="nav-item"><Link to="/resources#blog">Blog</Link></li>
         </ul>
       </nav>
       <main className="main-content">
@@ -65,7 +65,11 @@ function App() {
           <h1 className={`hero-main-heading${animate ? ' fade-in-bottom' : ''}`}>Lamm & Company</h1>
           <h2 className={animate ? 'fade-in-bottom' : ''}>Expert Accounting for Idaho & Beyond</h2>
           <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but anywhere in the world. Six locations, one commitment: your financial success—wherever you are.</p>
-          <Link to="/services" className={`cta-btn${animate ? ' fade-in-bottom' : ''}`}>Explore Our Services</Link>
+          <div className={`hero-cta-group${animate ? ' fade-in-bottom' : ''}`}>
+            <Link to="/services" className="cta-btn">Explore Our Services</Link>
+            <Link to="/resources#pay-for-services" className="cta-btn cta-btn-secondary">Pay my bill</Link>
+            <Link to="/secure-upload" className="cta-btn cta-btn-secondary">Secure Document Upload</Link>
+          </div>
         </section>
         <section className="locations-section" id="locations" ref={locationsRef}>
           <h2 className={locationsVisible ? 'fade-in-bottom' : ''}>Our Idaho Locations</h2>
