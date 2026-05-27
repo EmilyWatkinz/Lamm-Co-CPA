@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './App.css';
+import SiteNavbar from './components/SiteNavbar';
 
 function About() {
   const [selectedTeam, setSelectedTeam] = useState('Management');
@@ -51,20 +51,7 @@ function About() {
   ];
   return (
     <div className="about-page classy-about-bg">
-      <nav className="navbar">
-        <div className="nav-logo-group">
-          <img src="/Lamm+-+Co+LOGO-162w.webp" alt="Lamm & Company Logo" className="nav-logo-img" />
-          <Link to="/" className="nav-logo-text" style={{ textDecoration: 'none' }}>Lamm & Company</Link>
-        </div>
-        <ul className="nav-list nav-right">
-          <li className="nav-item"><Link to="/about">About</Link></li>
-          <li className="nav-item"><Link to="/services">Services</Link></li>
-          <li className="nav-item"><Link to="/resources">Resources</Link></li>
-          <li className="nav-item"><Link to="/locations">Locations</Link></li>
-          <li className="nav-item"><Link to="/reviews">Reviews</Link></li>
-          <li className="nav-item"><Link to="/resources#blog">Blog</Link></li>
-        </ul>
-      </nav>
+      <SiteNavbar />
       <div className="about-content">
         <img
           src="/Staff+minus+Barrett-2880w.webp"
@@ -246,8 +233,23 @@ function About() {
         )}
         {selectedTeam === 'Payroll Team' && (
           <div className="team-cards-container slow-fade" style={{ flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', display: 'flex', marginTop: '2rem' }}>
-            {/* Shaely Robison */}
+            {/* Jane Garzone-Talbert */}
             <div className="team-card slow-fade-up delay-0">
+              <img src="/Jane-Pic.webp" alt="Jane Garzone-Talbert" className="team-card-img" />
+              <div className="team-card-title">Jane Garzone-Talbert</div>
+              <div className="team-card-role">Payroll Manager</div>
+              <div className="team-card-bio">
+                {[
+                  "Jane has been with Lamm & Company for over 5 years and counting.",
+                  "Her favorite thing about working with the company is the management style and the continuous opportunities to grow both professionally and personally.",
+                  "A fun fact about Jolene is that she is a boy mom, so she doesn't scare easily!"
+                ].map((para, i) => (
+                  <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
+                ))}
+              </div>
+            </div>
+            {/* Shaely Robison */}
+            <div className="team-card slow-fade-up delay-1">
               <img src="/Shaely-Pic.webp" alt="Shaely Robison" className="team-card-img" />
               <div className="team-card-title">Shaely Robison</div>
               <div className="team-card-role">Payroll Associate II</div>
@@ -262,7 +264,7 @@ function About() {
               </div>
             </div>
             {/* Heidi Carter */}
-            <div className="team-card slow-fade-up delay-1">
+            <div className="team-card slow-fade-up delay-2">
               <img src="/NoPic-Pic.webp" alt="Heidi Carter" className="team-card-img" />
               <div className="team-card-title">Heidi Carter</div>
               <div className="team-card-role">Payroll Associate I</div>

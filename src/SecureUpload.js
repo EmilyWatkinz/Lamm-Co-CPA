@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './App.css';
+import SiteNavbar from './components/SiteNavbar';
 
 function SecureUpload() {
   const [showScroll, setShowScroll] = useState(false);
@@ -15,20 +15,7 @@ function SecureUpload() {
 
   return (
     <div className="resources-page classy-about-bg">
-      <nav className="navbar">
-        <div className="nav-logo-group">
-          <img src="/Lamm+-+Co+LOGO-162w.webp" alt="Lamm & Company Logo" className="nav-logo-img" />
-          <Link to="/" className="nav-logo-text" style={{ textDecoration: 'none' }}>Lamm & Company</Link>
-        </div>
-        <ul className="nav-list nav-right">
-          <li className="nav-item"><Link to="/about">About</Link></li>
-          <li className="nav-item"><Link to="/services">Services</Link></li>
-          <li className="nav-item"><Link to="/resources">Resources</Link></li>
-          <li className="nav-item"><Link to="/locations">Locations</Link></li>
-          <li className="nav-item"><Link to="/reviews">Reviews</Link></li>
-          <li className="nav-item"><Link to="/blog">Blog</Link></li>
-        </ul>
-      </nav>
+      <SiteNavbar blogTo="/blog" />
 
       <main className="blog-page-wrap">
         <section className="blog-page-hero">

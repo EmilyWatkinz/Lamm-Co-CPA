@@ -2,6 +2,7 @@
 import './App.css';
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SiteNavbar from './components/SiteNavbar';
 
 function App() {
   const [showScroll, setShowScroll] = useState(false);
@@ -47,20 +48,7 @@ function App() {
 
   return (
     <div className="App classy-about-bg home-bg">
-      <nav className="navbar">
-        <div className="nav-logo-group">
-          <img src="/Lamm+-+Co+LOGO-162w.webp" alt="Lamm & Company Logo" className="nav-logo-img" />
-          <Link to="/" className="nav-logo-text" style={{ textDecoration: 'none' }}>Lamm & Company</Link>
-        </div>
-        <ul className="nav-list nav-right">
-          <li className="nav-item"><Link to="/about">About</Link></li>
-          <li className="nav-item"><Link to="/services">Services</Link></li>
-          <li className="nav-item"><Link to="/resources">Resources</Link></li>
-          <li className="nav-item"><Link to="/locations">Locations</Link></li>
-          <li className="nav-item"><Link to="/reviews">Reviews</Link></li>
-          <li className="nav-item"><Link to="/resources#blog">Blog</Link></li>
-        </ul>
-      </nav>
+      <SiteNavbar />
       <main className="main-content">
         <section className={`hero${animate ? ' fade-in-bottom' : ''}`}> 
           <h1 className={`hero-main-heading${animate ? ' fade-in-bottom' : ''}`}>Lamm & Company CPA</h1>
