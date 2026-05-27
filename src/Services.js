@@ -118,7 +118,7 @@ function Services() {
           <li className="nav-item"><Link to="/about">About</Link></li>
           <li className="nav-item"><Link to="/services">Services</Link></li>
           <li className="nav-item"><Link to="/resources">Resources</Link></li>
-          <li className="nav-item"><a href="/#locations">Locations</a></li>
+          <li className="nav-item"><Link to="/locations">Locations</Link></li>
           <li className="nav-item"><Link to="/reviews">Reviews</Link></li>
           <li className="nav-item"><Link to="/resources#blog">Blog</Link></li>
         </ul>
@@ -126,11 +126,14 @@ function Services() {
 
       <main className="services-wrap">
         <section className="services-hero">
-          <h1>Our Services</h1>
-          <p>
-            Professional accounting and advisory support designed to help individuals,
-            families, and businesses stay confident in every financial decision.
-          </p>
+          <div className="services-hero-content">
+            <h1>Our Services</h1>
+            <p>
+              Professional accounting and advisory support designed to help individuals,
+              families, and businesses stay confident in every financial decision.
+            </p>
+          </div>
+          <img src="/Services.avif" alt="Services" className="services-hero-image" />
         </section>
 
         <section className="services-grid" aria-label="Lamm & Company services list">

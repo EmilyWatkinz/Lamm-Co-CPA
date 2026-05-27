@@ -50,7 +50,7 @@ function Resources() {
           <li className="nav-item"><Link to="/about">About</Link></li>
           <li className="nav-item"><Link to="/services">Services</Link></li>
           <li className="nav-item"><Link to="/resources">Resources</Link></li>
-          <li className="nav-item"><a href="/#locations">Locations</a></li>
+          <li className="nav-item"><Link to="/locations">Locations</Link></li>
           <li className="nav-item"><Link to="/reviews">Reviews</Link></li>
           <li className="nav-item"><Link to="/resources#blog">Blog</Link></li>
         </ul>
@@ -58,10 +58,15 @@ function Resources() {
 
       <main className="resources-wrap">
         <section className="resources-hero">
-          <h1>Resources</h1>
-          <p>
-            Tools and insights to help you stay informed throughout the year.
-          </p>
+          <div className="resources-hero-main">
+            <h1>Resources</h1>
+            <p>
+              Tools and insights to help you stay informed throughout the year.
+            </p>
+          </div>
+          <Link to="/tax-calendar" className="resources-deadlines-btn">
+            TAX CALENDAR DATES &amp; DEADLINES
+          </Link>
         </section>
 
         <section className="resources-grid" aria-label="Lamm & Company resource library">

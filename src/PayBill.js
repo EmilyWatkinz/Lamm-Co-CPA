@@ -24,7 +24,7 @@ function PayBill() {
           <li className="nav-item"><Link to="/about">About</Link></li>
           <li className="nav-item"><Link to="/services">Services</Link></li>
           <li className="nav-item"><Link to="/resources">Resources</Link></li>
-          <li className="nav-item"><a href="/#locations">Locations</a></li>
+          <li className="nav-item"><Link to="/locations">Locations</Link></li>
           <li className="nav-item"><Link to="/reviews">Reviews</Link></li>
           <li className="nav-item"><Link to="/blog">Blog</Link></li>
         </ul>

@@ -27,7 +27,6 @@ function App() {
     return () => clearTimeout(timeout);
   }, []);
 
-  // Intersection Observer for locations fade-in
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       ([entry]) => {
@@ -38,9 +37,11 @@ function App() {
       },
       { threshold: 0.2 }
     );
+
     if (locationsRef.current) {
       observer.observe(locationsRef.current);
     }
+
     return () => observer.disconnect();
   }, []);
 
@@ -55,25 +56,26 @@ function App() {
           <li className="nav-item"><Link to="/about">About</Link></li>
           <li className="nav-item"><Link to="/services">Services</Link></li>
           <li className="nav-item"><Link to="/resources">Resources</Link></li>
-          <li className="nav-item"><a href="#locations">Locations</a></li>
+          <li className="nav-item"><Link to="/locations">Locations</Link></li>
           <li className="nav-item"><Link to="/reviews">Reviews</Link></li>
           <li className="nav-item"><Link to="/resources#blog">Blog</Link></li>
         </ul>
       </nav>
       <main className="main-content">
         <section className={`hero${animate ? ' fade-in-bottom' : ''}`}> 
-          <h1 className={`hero-main-heading${animate ? ' fade-in-bottom' : ''}`}>Lamm & Company</h1>
-          <h2 className={animate ? 'fade-in-bottom' : ''}>Expert Accounting for Idaho & Beyond</h2>
-          <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but anywhere in the world. Six locations, one commitment: your financial success—wherever you are.</p>
+          <h1 className={`hero-main-heading${animate ? ' fade-in-bottom' : ''}`}>Lamm & Company CPA</h1>
+          <h2 className={`hero-subheading${animate ? ' fade-in-bottom' : ''}`}>Your trusted CPA firm since 1997</h2>
+          <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but <strong>anywhere in the world</strong>. Six locations, one commitment: your financial success—<strong>wherever you are</strong>.</p>
           <div className={`hero-cta-group${animate ? ' fade-in-bottom' : ''}`}>
             <Link to="/services" className="cta-btn">Explore Our Services</Link>
             <Link to="/resources#pay-for-services" className="cta-btn cta-btn-secondary">Pay my bill</Link>
             <Link to="/secure-upload" className="cta-btn cta-btn-secondary">Secure Document Upload</Link>
           </div>
         </section>
+
         <section className="locations-section" id="locations" ref={locationsRef}>
           <h2 className={locationsVisible ? 'fade-in-bottom' : ''}>Our Idaho Locations</h2>
-          <div className="locations-list">
+          <div className="locations-list home-locations-list">
             <a
               href="https://share.google/ZHSlrttd60SkRzbQG"
               target="_blank"
@@ -123,6 +125,15 @@ function App() {
               Kuna
             </a>
           </div>
+          <p className={`home-locations-contact${locationsVisible ? ' fade-in-bottom' : ''}`}>
+            Questions? Need Assistance? Email us at{' '}
+            <a
+              href="mailto:info@lammcocpa.com?subject=General%20Inquiry&body=Hello%20Lamm%20%26%20Company%2C%0D%0A%0D%0A"
+              title="Open your email app to contact info@lammcocpa.com"
+            >
+              info@lammcocpa.com
+            </a>
+          </p>
         </section>
       </main>
       <footer className="footer">

@@ -60,7 +60,7 @@ function About() {
           <li className="nav-item"><Link to="/about">About</Link></li>
           <li className="nav-item"><Link to="/services">Services</Link></li>
           <li className="nav-item"><Link to="/resources">Resources</Link></li>
-          <li className="nav-item"><a href="/#locations">Locations</a></li>
+          <li className="nav-item"><Link to="/locations">Locations</Link></li>
           <li className="nav-item"><Link to="/reviews">Reviews</Link></li>
           <li className="nav-item"><Link to="/resources#blog">Blog</Link></li>
         </ul>
@@ -163,7 +163,7 @@ function About() {
             </div>
             {/* Mayson Bell */}
             <div className="team-card slow-fade-up delay-2">
-              <img src="/NoPic-Pic.webp" alt="Mayson Bell" className="team-card-img" />
+              <img src="/Unknown Man.jpg" alt="Mayson Bell" className="team-card-img" />
               <div className="team-card-title">Mayson Bell</div>
               <div className="team-card-role">Accounting Associate I</div>
               <div className="team-card-bio">

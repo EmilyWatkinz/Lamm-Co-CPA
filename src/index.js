@@ -9,6 +9,8 @@ import Blog from './Blog';
 import SecureUpload from './SecureUpload';
 import PayBill from './PayBill';
 import Reviews from './Reviews';
+import TaxCalendar from './TaxCalendar';
+import Locations from './Locations';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
@@ -25,6 +27,8 @@ root.render(
         <Route path="/secure-upload" element={<SecureUpload />} />
         <Route path="/pay-bill" element={<PayBill />} />
         <Route path="/reviews" element={<Reviews />} />
+        <Route path="/tax-calendar" element={<TaxCalendar />} />
+        <Route path="/locations" element={<Locations />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
