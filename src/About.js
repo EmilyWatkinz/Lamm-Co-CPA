@@ -169,7 +169,7 @@ function About() {
               <div className="team-card-bio">
                 {[
                   "Kelsey has been with the company for five years.",
-                  "Her favorite thing about working with the company is the fall family fee.",
+                  "Her favorite thing about working with the company is the small family feel.",
                   "A fun fact about Kelsey is that she enjoys being outside and in nature as much as she possibly can."
                 ].map((para, i) => (
                   <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
@@ -340,23 +340,8 @@ function About() {
                 ))}
               </div>
             </div>
-            {/* Natalee Stone */}
-            <div className="team-card slow-fade-up delay-4">
-              <img src="/NoPic-Pic.webp" alt="Natalee Stone" className="team-card-img" />
-              <div className="team-card-title">Natalee Stone</div>
-              <div className="team-card-role">Admin Associate I</div>
-              <div className="team-card-bio">
-                {[
-                  "Natalee started with Lamm & Company in February of 2026.",
-                  "Her favorite thing about working here is getting to help clients feel taken care of and making the process easier for them.",
-                  "Fun fact: Natalee has a serious love for cozy nights and a good movie or book."
-                ].map((para, i) => (
-                  <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
-                ))}
-              </div>
-            </div>
             {/* Aspen Degenstein */}
-            <div className="team-card slow-fade-up delay-5">
+            <div className="team-card slow-fade-up delay-4">
               <img src="/NoPic-Pic.webp" alt="Aspen Degenstein" className="team-card-img" />
               <div className="team-card-title">Aspen Degenstein</div>
               <div className="team-card-role">Admin Associate</div>
@@ -365,6 +350,21 @@ function About() {
                   "Aspen started with Lamm & Company in 2025.",
                   "She loves the work environment, enjoys organization and data entry, and values customer interaction.",
                   "A fun fact about Aspen is that she is just as obsessed with monster trucks as her four-year-old son, and she recently learned to ride a snow bike and dirt bike."
+                ].map((para, i) => (
+                  <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
+                ))}
+              </div>
+            </div>
+            {/* Natalee Stone */}
+            <div className="team-card slow-fade-up delay-5">
+              <img src="/NoPic-Pic.webp" alt="Natalee Stone" className="team-card-img" />
+              <div className="team-card-title">Natalee Stone</div>
+              <div className="team-card-role">Admin Associate I</div>
+              <div className="team-card-bio">
+                {[
+                  "Natalee started with Lamm & Company in February of 2026.",
+                  "Her favorite thing about working here is getting to help clients feel taken care of and making the process easier for them.",
+                  "Fun fact: Natalee has a serious love for cozy nights and a good movie or book."
                 ].map((para, i) => (
                   <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
                 ))}
