@@ -39,6 +39,7 @@ function Reviews() {
   const [carouselGap, setCarouselGap] = useState(window.innerWidth <= 700 ? 0.8 : 1);
   const [displayIndex, setDisplayIndex] = useState(window.innerWidth <= 700 ? 1 : 3);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
+  const [isSliding, setIsSliding] = useState(false);
   const [slideStep, setSlideStep] = useState(0);
   const [formName, setFormName] = useState('');
   const [formRating, setFormRating] = useState(0);
@@ -85,6 +86,7 @@ function Reviews() {
   useEffect(() => {
     setDisplayIndex(visibleCount);
     setTransitionEnabled(true);
+    setIsSliding(false);
   }, [visibleCount, allReviews.length]);
 
   useEffect(() => {
@@ -103,26 +105,38 @@ function Reviews() {
   }, [visibleCount, carouselGap]);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  const goPrev = () => setDisplayIndex((prev) => prev - 1);
-  const goNext = () => setDisplayIndex((prev) => prev + 1);
+  const goPrev = () => {
+    if (isSliding) return;
+    setIsSliding(true);
+    setDisplayIndex((prev) => prev - 1);
+  };
+
+  const goNext = () => {
+    if (isSliding) return;
+    setIsSliding(true);
+    setDisplayIndex((prev) => prev + 1);
+  };
 
   const handleTransitionEnd = (event) => {
     if (event.propertyName !== 'transform') return;
 
     const firstRealIndex = visibleCount;
     const lastRealIndex = visibleCount + allReviews.length - 1;
+    setIsSliding(false);
 
-    if (displayIndex === visibleCount - 1) {
-      setTransitionEnabled(false);
-      setDisplayIndex(lastRealIndex);
-      window.requestAnimationFrame(() => {
-        window.requestAnimationFrame(() => setTransitionEnabled(true));
-      });
+    let normalizedIndex = displayIndex;
+
+    if (displayIndex < firstRealIndex) {
+      normalizedIndex = displayIndex + allReviews.length;
     }
 
-    if (displayIndex === visibleCount + allReviews.length) {
+    if (displayIndex > lastRealIndex) {
+      normalizedIndex = displayIndex - allReviews.length;
+    }
+
+    if (normalizedIndex !== displayIndex) {
       setTransitionEnabled(false);
-      setDisplayIndex(firstRealIndex);
+      setDisplayIndex(normalizedIndex);
       window.requestAnimationFrame(() => {
         window.requestAnimationFrame(() => setTransitionEnabled(true));
       });
