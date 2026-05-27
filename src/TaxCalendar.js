@@ -205,7 +205,7 @@ function TaxCalendar() {
             <p>Hover over each month to preview important due dates and tax reminders. We will keep this calendar updated throughout the year.</p>
           </div>
           <img
-            src="/Calendar.webp"
+            src={`${process.env.PUBLIC_URL}/Calendar.webp`}
             alt="Tax calendar"
             className="calendar-hero-image"
           />
