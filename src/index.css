@@ -15,3 +15,63 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.route-loading-state {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #f6f3ee 0%, #fbeee3 100%);
+  padding: 1.2rem;
+}
+
+.route-loading-card {
+  width: min(460px, 100%);
+  background: #fff;
+  border: 1px solid #f1deab;
+  border-left: 6px solid #900c3f;
+  border-radius: 0.95rem;
+  box-shadow: 0 8px 22px rgba(74, 13, 35, 0.12);
+  padding: 1.35rem 1.1rem;
+  text-align: center;
+}
+
+.route-loading-card p {
+  margin: 0.8rem 0 0.75rem 0;
+  color: #6f1028;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.route-loading-spinner {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid #ead28a;
+  border-top-color: #900c3f;
+  margin: 0 auto;
+  animation: routeSpin 0.9s linear infinite;
+}
+
+.route-loading-shimmer {
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f7eac8 0%, #fff4dd 45%, #f7eac8 100%);
+  background-size: 220% 100%;
+  animation: routeShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes routeSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes routeShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}

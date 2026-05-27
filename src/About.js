@@ -379,11 +379,11 @@ function About() {
               <div className="team-card-title">Emily Watkins</div>
               <div className="team-card-role">Accounts Receivable Associate</div>
               <div className="team-card-bio">
-                {[
-                  "Emily has been with Lamm & Company since January of 2026.",
-                  "Her favorite thing about working with the company are all the opportunities for growth and learning. Sky is the limit with this company!",
-                  "Outside of work, Emily enjoys going to Cross Fit and spending time with her two children."
-                ].map((para, i) => (
+                  {[
+                    "Emily has been with Lamm & Company since January of 2026.",
+                    "Her favorite thing about working with the company are all the opportunities for growth and learning. Sky's the limit here!",
+                    "Outside of work, Emily enjoys going to Cross Fit and spending time with her two children."
+                  ].map((para, i) => (
                   <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
                 ))}
               </div>
