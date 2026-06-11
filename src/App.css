@@ -2503,8 +2503,8 @@ html, body {
     flex: 1 1 100%;
   }
   .calendar-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
   }
   .team-card {
     width: 100%;
@@ -2604,6 +2604,7 @@ html, body {
   }
 
   .services-hero-content,
+  .calendar-hero-content,
   .locations-hero-content,
   .reviews-hero-content {
     flex: 0 1 auto !important;
@@ -2634,6 +2635,15 @@ html, body {
     white-space: normal !important;
     word-break: break-word !important;
     overflow-wrap: anywhere !important;
+  }
+
+  .calendar-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.7rem !important;
+  }
+
+  .calendar-month-card {
+    min-height: 72px !important;
   }
 }
 
