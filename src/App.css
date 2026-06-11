@@ -2546,12 +2546,22 @@ html, body {
     line-height: 1.4 !important;
   }
 
+  .hero-cta-group {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0.45rem !important;
+  }
+
   .hero-cta-group .cta-btn {
     box-sizing: border-box !important;
     display: block !important;
     margin: 0 !important;
-    font-size: 0.82rem !important;
-    padding: 0.42rem 0.55rem !important;
+    min-width: 0 !important;
+    font-size: 0.74rem !important;
+    line-height: 1.2 !important;
+    padding: 0.38rem 0.45rem !important;
     border-radius: 0.75rem !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -2593,6 +2603,14 @@ html, body {
     margin-bottom: 0 !important;
   }
 
+  .services-hero-content,
+  .locations-hero-content,
+  .reviews-hero-content {
+    flex: 0 1 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   .services-hero-image,
   .calendar-hero-image,
   .reviews-hero-image,
@@ -2616,5 +2634,12 @@ html, body {
     white-space: normal !important;
     word-break: break-word !important;
     overflow-wrap: anywhere !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-cta-group .cta-btn {
+    font-size: 0.7rem !important;
+    padding: 0.34rem 0.4rem !important;
   }
 }
