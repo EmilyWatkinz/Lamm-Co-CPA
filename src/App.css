@@ -2556,18 +2556,19 @@ html, body {
 
   .hero-cta-group .cta-btn {
     box-sizing: border-box !important;
-    display: block !important;
+    display: inline-block !important;
     margin: 0 !important;
     min-width: 0 !important;
-    font-size: 0.74rem !important;
+    font-size: 0.9rem !important;
     line-height: 1.2 !important;
-    padding: 0.38rem 0.45rem !important;
+    padding: 0.5rem 0.75rem !important;
     border-radius: 0.75rem !important;
-    width: 100% !important;
-    max-width: 100% !important;
+    width: auto !important;
+    max-width: 88vw !important;
     white-space: normal !important;
     word-break: break-word !important;
     overflow-wrap: anywhere !important;
+    text-align: center !important;
   }
 
   .services-hero,
@@ -2660,7 +2661,8 @@ html, body {
 
 @media (max-width: 480px) {
   .hero-cta-group .cta-btn {
-    font-size: 0.7rem !important;
-    padding: 0.34rem 0.4rem !important;
+    font-size: 0.85rem !important;
+    padding: 0.46rem 0.68rem !important;
+    max-width: 90vw !important;
   }
 }
