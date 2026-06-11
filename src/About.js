@@ -242,7 +242,7 @@ function About() {
                 {[
                   "Jane has been with Lamm & Company for over 5 years and counting.",
                   "Her favorite thing about working with the company is the management style and the continuous opportunities to grow both professionally and personally.",
-                  "A fun fact about Jolene is that she is a boy mom, so she doesn't scare easily!"
+                  "A fun fact about Jane is that she is a boy mom, so she doesn't scare easily!"
                 ].map((para, i) => (
                   <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
                 ))}

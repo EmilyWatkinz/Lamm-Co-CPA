@@ -6,6 +6,9 @@ import About from './About';
 import Services from './Services';
 import Resources from './Resources';
 import Blog from './Blog';
+import BlogPost1 from './BlogPost1';
+import BlogPost2 from './BlogPost2';
+import BlogPost3 from './BlogPost3';
 import SecureUpload from './SecureUpload';
 import PayBill from './PayBill';
 import Reviews from './Reviews';
@@ -24,6 +27,9 @@ root.render(
         <Route path="/services" element={<Services />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/setting-up-new-business" element={<BlogPost1 />} />
+        <Route path="/blog/tax-prep-4-u" element={<BlogPost2 />} />
+        <Route path="/blog/how-do-i-file" element={<BlogPost3 />} />
         <Route path="/secure-upload" element={<SecureUpload />} />
         <Route path="/pay-bill" element={<PayBill />} />
         <Route path="/reviews" element={<Reviews />} />

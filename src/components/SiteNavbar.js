@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-function SiteNavbar({ blogTo = '/resources#blog' }) {
+function SiteNavbar({ blogTo = '/blog' }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 

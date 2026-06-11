@@ -28,6 +28,18 @@ const baseReviews = [
       'Seriously can thank these guys enough. Tyler and Barrett helped my wife and I out of an ugly tax situation. We have gone to them for 2 years now and we have received awesome returns! If you want your taxes done correctly and fast there is not a better option!',
     author: 'Garrett Henderson',
   },
+  {
+    quote:
+      'Every employee in this business has been totally professional, courteous, and kind. Further, Derek Reis has helped us tremendously in our organization! He has saved us time and money! What a knowledgeable help he is and has been to our business! Thank you!',
+    author: 'Kylie Schroeder',
+    rating: 5,
+  },
+  {
+    quote:
+      'We were with a company in Nampa for many years and since moving to Fruitland, we wanted to find a new company where we lived to do our taxes. We are so glad we went with Lamm and Company. From the minute we stepped into their office, we were happily greeted by Annie Adamson. We met with Derick and he talked to us at length, he answered all of our questions. He assured us we were in good hands with them. We felt comfortable and are confident our tax needs will be met. Thank you...',
+    author: 'Steve and Deb Bliss',
+    rating: 5,
+  },
 ];
 
 const GOOGLE_REVIEW_URL = 'https://share.google/8igRpqd2HglNZCrFC';

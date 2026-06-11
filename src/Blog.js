@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './App.css';
 import SiteNavbar from './components/SiteNavbar';
 
@@ -50,10 +51,36 @@ function Blog() {
         </section>
 
         <section className="blog-posts-grid" aria-label="Blog posts">
-          <article className="blog-post-card">
-            <h2>New posts coming soon</h2>
-            <p>We are preparing practical tax and business articles for this section. Check back shortly for updates.</p>
-          </article>
+          <Link to="/blog/setting-up-new-business" className="blog-card-link">
+            <article className="blog-post-card blog-card-clickable">
+              <img src="/First Blog Photo.webp" alt="Setting Up a New Business Correctly" className="blog-card-img" />
+              <div className="blog-card-body">
+                <h2>Setting Up a New Business Correctly</h2>
+                <p className="blog-card-byline">By Lori Colligan</p>
+                <span className="blog-card-read-more">Read More →</span>
+              </div>
+            </article>
+          </Link>
+          <Link to="/blog/tax-prep-4-u" className="blog-card-link">
+            <article className="blog-post-card blog-card-clickable">
+              <img src="/Second Blog Photo" alt="Tax Prep 4 U" className="blog-card-img" />
+              <div className="blog-card-body">
+                <h2>Tax Prep 4 U</h2>
+                <p className="blog-card-byline">By Tyler Lamm</p>
+                <span className="blog-card-read-more">Read More →</span>
+              </div>
+            </article>
+          </Link>
+          <Link to="/blog/how-do-i-file" className="blog-card-link">
+            <article className="blog-post-card blog-card-clickable">
+              <img src="/Third Blog Photo.png" alt="How do I file?" className="blog-card-img" />
+              <div className="blog-card-body">
+                <h2>How do I file?</h2>
+                <p className="blog-card-byline">By the Internal Revenue Service</p>
+                <span className="blog-card-read-more">Read More →</span>
+              </div>
+            </article>
+          </Link>
         </section>
       </main>
 
