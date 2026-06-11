@@ -2643,7 +2643,18 @@ html, body {
   }
 
   .calendar-month-card {
-    min-height: 72px !important;
+    min-height: 210px !important;
+  }
+
+  .calendar-month-hover {
+    justify-content: flex-start !important;
+    overflow-y: auto !important;
+    padding: 0.75rem 0.8rem !important;
+  }
+
+  .calendar-month-hover li {
+    font-size: 0.9rem !important;
+    line-height: 1.45 !important;
   }
 }
 

@@ -55,9 +55,9 @@ function App() {
           <h2 className={`hero-subheading${animate ? ' fade-in-bottom' : ''}`}>Your trusted CPA firm since 1997</h2>
           <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but <strong>anywhere in the world</strong>. Six locations, one commitment: your financial success—<strong>wherever you are</strong>.</p>
           <div className={`hero-cta-group${animate ? ' fade-in-bottom' : ''}`}>
-            <Link to="/services" className="cta-btn">Explore Services</Link>
-            <Link to="/resources#pay-for-services" className="cta-btn cta-btn-secondary">Pay Bill</Link>
-            <Link to="/secure-upload" className="cta-btn cta-btn-secondary">Upload Docs</Link>
+            <Link to="/services" className="cta-btn">Services</Link>
+            <Link to="/resources#pay-for-services" className="cta-btn cta-btn-secondary">Pay</Link>
+            <Link to="/secure-upload" className="cta-btn cta-btn-secondary">Upload</Link>
           </div>
         </section>
 
