@@ -2408,6 +2408,13 @@ html, body {
   .review-card-carousel {
     flex-basis: 100%;
   }
+  .review-card-carousel .review-quote {
+    display: -webkit-box;
+    line-clamp: 5;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   .review-carousel-arrow {
     justify-self: center;
     align-self: center;
@@ -2510,5 +2517,94 @@ html, body {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Final mobile hotfix: force compact top sections across all pages */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 0 !important;
+    padding: 4.25rem 0.9rem 2rem 0.9rem !important;
+    background-position: 62% center !important;
+  }
+
+  .hero-main-heading {
+    font-size: 1.45rem !important;
+    margin-bottom: 0.45rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-subheading {
+    font-size: 0.98rem !important;
+    margin-bottom: 0.55rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .subtitle {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.9rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .hero-cta-group .cta-btn {
+    font-size: 0.82rem !important;
+    padding: 0.45rem 0.65rem !important;
+    border-radius: 0.75rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
+  .services-hero,
+  .resources-hero,
+  .calendar-hero,
+  .reviews-hero,
+  .blog-page-hero,
+  .locations-hero {
+    padding: 0.85rem 0.85rem 0.9rem 0.85rem !important;
+    gap: 0.5rem !important;
+    margin-bottom: 0.55rem !important;
+  }
+
+  .services-hero h1,
+  .resources-hero h1,
+  .calendar-hero h1,
+  .reviews-hero h1,
+  .blog-page-hero h1,
+  .locations-section h2 {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.3rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .services-hero p,
+  .resources-hero p,
+  .calendar-hero p,
+  .reviews-hero p,
+  .blog-page-hero p,
+  .locations-hero-content p {
+    font-size: 0.88rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .services-hero-image,
+  .calendar-hero-image,
+  .reviews-hero-image,
+  .locations-hero-image {
+    max-height: 120px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .resources-deadlines-btn {
+    font-size: 0.76rem !important;
+    padding: 0.45rem 0.65rem !important;
+    letter-spacing: 0.01em !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
   }
 }

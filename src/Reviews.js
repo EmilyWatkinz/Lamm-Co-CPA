@@ -58,10 +58,16 @@ function Reviews() {
   const [formReview, setFormReview] = useState('');
   const [submitMessage, setSubmitMessage] = useState('');
   const viewportRef = useRef(null);
+
+  const displayReviews =
+    visibleCount === 1
+      ? allReviews.filter((review) => review.author !== 'Steve and Deb Bliss')
+      : allReviews;
+
   const carouselItems = [
-    ...allReviews.slice(-visibleCount),
-    ...allReviews,
-    ...allReviews.slice(0, visibleCount),
+    ...displayReviews.slice(-visibleCount),
+    ...displayReviews,
+    ...displayReviews.slice(0, visibleCount),
   ];
 
   useEffect(() => {
@@ -99,7 +105,7 @@ function Reviews() {
     setDisplayIndex(visibleCount);
     setTransitionEnabled(true);
     setIsSliding(false);
-  }, [visibleCount, allReviews.length]);
+  }, [visibleCount, displayReviews.length]);
 
   useEffect(() => {
     const measureSlideStep = () => {
@@ -133,17 +139,17 @@ function Reviews() {
     if (event.propertyName !== 'transform') return;
 
     const firstRealIndex = visibleCount;
-    const lastRealIndex = visibleCount + allReviews.length - 1;
+    const lastRealIndex = visibleCount + displayReviews.length - 1;
     setIsSliding(false);
 
     let normalizedIndex = displayIndex;
 
     if (displayIndex < firstRealIndex) {
-      normalizedIndex = displayIndex + allReviews.length;
+      normalizedIndex = displayIndex + displayReviews.length;
     }
 
     if (displayIndex > lastRealIndex) {
-      normalizedIndex = displayIndex - allReviews.length;
+      normalizedIndex = displayIndex - displayReviews.length;
     }
 
     if (normalizedIndex !== displayIndex) {
@@ -249,7 +255,7 @@ function Reviews() {
                 {carouselItems.map((review, index) => (
                   <article className="review-card review-card-carousel" key={`${review.author}-${index}`}>
                     <div className="review-stars" aria-label={`${review.rating || 5} star review`}>{'★'.repeat(review.rating || 5)}</div>
-                    <p>"{review.quote}"</p>
+                    <p className="review-quote">"{review.quote}"</p>
                     <div className="review-author">- {review.author}</div>
                   </article>
                 ))}
