@@ -52,12 +52,28 @@ function App() {
       <main className="main-content">
         <section className={`hero${animate ? ' fade-in-bottom' : ''}`}> 
           <h1 className={`hero-main-heading${animate ? ' fade-in-bottom' : ''}`}>Lamm & Company CPA</h1>
-          <h2 className={`hero-subheading${animate ? ' fade-in-bottom' : ''}`}>Your trusted CPA firm since 1997</h2>
+          <h2 className={`hero-subheading${animate ? ' fade-in-bottom' : ''}`}>Your trusted CPa firm since 1989</h2>
           <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but <strong>anywhere in the world</strong>. Six locations, one commitment: your financial success—<strong>wherever you are</strong>.</p>
           <div className={`hero-cta-group${animate ? ' fade-in-bottom' : ''}`}>
             <Link to="/services" className="cta-btn">Explore Our Services</Link>
             <Link to="/resources#pay-for-services" className="cta-btn cta-btn-secondary">Pay my bill</Link>
             <Link to="/secure-upload" className="cta-btn cta-btn-secondary">Secure Document Upload</Link>
+          </div>
+        </section>
+
+        <section className="mission-section">
+          <div className="mission-card mission-card-delay-1">
+            <h2>Our Mission</h2>
+            <p>
+              To provide excellent financial and professional services while maintaining the highest level of professionalism.
+              We want to understand the business of our clients and provide services that will help them achieve their
+              business and personal financial goals.
+            </p>
+          </div>
+          <div className="values-card mission-card-delay-2">
+            <h2>Core Values</h2>
+            <p><strong>Our People Matter</strong></p>
+            <p>Integrity and Respect - Community - Relationships - Committed - Quality</p>
           </div>
         </section>
 

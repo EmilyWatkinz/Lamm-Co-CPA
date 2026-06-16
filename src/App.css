@@ -158,12 +158,30 @@
   }
 }
 
+@keyframes missionFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal-on-scroll,
   .reveal-on-scroll.is-visible {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .mission-card,
+  .values-card {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }
 
@@ -711,6 +729,49 @@ html, body {
   margin-bottom: 2.5rem;
   color: #fff8dc;
   max-width: 600px;
+}
+.mission-section {
+  background: linear-gradient(135deg, #fffaf1 0%, #f7ede0 100%);
+  padding: 2.5rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+}
+.mission-card,
+.values-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(144, 12, 63, 0.12);
+  border-radius: 1.1rem;
+  padding: 1.5rem 1.4rem;
+  box-shadow: 0 4px 18px rgba(144, 12, 63, 0.08);
+  opacity: 0;
+  transform: translateY(36px);
+  animation: missionFadeUp 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.mission-card-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.mission-card-delay-2 {
+  animation-delay: 0.28s;
+}
+.mission-card h2,
+.values-card h2 {
+  margin: 0 0 0.85rem 0;
+  color: #900C3F;
+  font-size: 1.45rem;
+}
+.mission-card p,
+.values-card p {
+  margin: 0;
+  color: #4d2633;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+.values-card p + p {
+  margin-top: 0.9rem;
 }
 
 .cta-btn {
@@ -2197,6 +2258,10 @@ html, body {
   .hero {
     min-height: 520px;
     padding: 7rem 2rem 4rem 2.5rem;
+  }
+  .mission-section {
+    grid-template-columns: 1fr;
+    padding: 1.25rem 0.75rem 1.75rem 0.75rem;
   }
   .hero-main-heading { font-size: 2.3rem; }
   .hero-subheading   { font-size: 1.55rem; }
