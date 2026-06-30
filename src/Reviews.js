@@ -277,6 +277,14 @@ function Reviews() {
             >
               More Reviews
             </a>
+            <a
+              href={googleReviewPageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="review-action-btn"
+            >
+              Leave Google Review
+            </a>
           </div>
 
           <section className="review-form-wrap" aria-label="Write a review form">
@@ -326,14 +334,6 @@ function Reviews() {
 
               <button type="submit" className="review-action-btn review-submit-btn">Submit Review</button>
             </form>
-            <a
-              href={googleReviewPageUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="review-action-btn review-submit-btn"
-            >
-              Leave Google Review
-            </a>
             {submitMessage && <p className="review-submit-message">{submitMessage}</p>}
           </section>
         </section>
