@@ -88,7 +88,7 @@ function Reviews() {
     } catch {
       setAllReviews(baseReviews);
     }
-  }, [removedAuthorNames]);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setShowScroll(window.scrollY > 200);
