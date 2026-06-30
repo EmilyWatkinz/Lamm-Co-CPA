@@ -171,11 +171,7 @@ function SecureUpload() {
               <button type="submit" className="cta-btn" disabled={isUploading}>
                 {isUploading ? 'Sending...' : uploadComplete ? 'Sent ✓' : 'Send Documents'}
               </button>
-              <p className="upload-hint">
-                {useFirebaseUpload
-                  ? 'Files are uploaded to Firebase and then emailed to ewatkins@lammcocpa.com.'
-                  : 'Files are emailed to ewatkins@lammcocpa.com after you submit this form.'}
-              </p>
+
             </div>
           </form>
           {statusMessage && <p className={`upload-status upload-status-${statusType}`}>{statusMessage}</p>}
