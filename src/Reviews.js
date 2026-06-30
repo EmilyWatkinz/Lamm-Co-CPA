@@ -42,9 +42,9 @@ const baseReviews = [
   },
 ];
 
-const GOOGLE_REVIEW_URL = 'https://share.google/8igRpqd2HglNZCrFC';
-
 function Reviews() {
+  const googleReviewPageUrl =
+    'https://www.google.com/search?q=lamm+co+cpa+mccall+reviews&rlz=1C1QYVO_enUS1184US1184&oq=lamm+co+cpa+mccall+reviews&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRifBdIBCDM2OTdqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8';
   const [showScroll, setShowScroll] = useState(false);
   const [allReviews, setAllReviews] = useState(baseReviews);
   const [visibleCount, setVisibleCount] = useState(window.innerWidth <= 700 ? 1 : 3);
@@ -191,10 +191,8 @@ function Reviews() {
     setFormName('');
     setFormRating(0);
     setFormReview('');
-    setSubmitMessage('Thank you. Your review is now shown on this page. Next, please submit it to Google in the tab that opens.');
+    setSubmitMessage('Thank you. Your review is now shown on this page.');
     setDisplayIndex(visibleCount);
-
-    window.open(GOOGLE_REVIEW_URL, '_blank', 'noopener,noreferrer');
   };
 
   useEffect(() => {
@@ -328,6 +326,14 @@ function Reviews() {
 
               <button type="submit" className="review-action-btn review-submit-btn">Submit Review</button>
             </form>
+            <a
+              href={googleReviewPageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="review-action-btn review-submit-btn"
+            >
+              Leave Google Review
+            </a>
             {submitMessage && <p className="review-submit-message">{submitMessage}</p>}
           </section>
         </section>
