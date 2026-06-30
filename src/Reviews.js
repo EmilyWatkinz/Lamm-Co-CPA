@@ -61,10 +61,14 @@ function Reviews() {
   const [submitMessage, setSubmitMessage] = useState('');
   const viewportRef = useRef(null);
 
+  const filteredAllReviews = allReviews.filter(
+    (review) => !removedAuthorNames.has((review?.author || '').trim().toLowerCase())
+  );
+
   const displayReviews =
     visibleCount === 1
-      ? allReviews.filter((review) => review.author !== 'Steve and Deb Bliss')
-      : allReviews;
+      ? filteredAllReviews.filter((review) => review.author !== 'Steve and Deb Bliss')
+      : filteredAllReviews;
 
   const carouselItems = [
     ...displayReviews.slice(-visibleCount),
