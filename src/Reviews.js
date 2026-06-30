@@ -43,6 +43,7 @@ const baseReviews = [
 ];
 
 function Reviews() {
+  const removedAuthorName = 'emily smith';
   const googleReviewPageUrl =
     'https://www.google.com/search?q=lamm+co+cpa+mccall+reviews&rlz=1C1QYVO_enUS1184US1184&oq=lamm+co+cpa+mccall+reviews&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRifBdIBCDM2OTdqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8';
   const [showScroll, setShowScroll] = useState(false);
@@ -77,12 +78,16 @@ function Reviews() {
 
       const parsed = JSON.parse(stored);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        setAllReviews([...parsed, ...baseReviews]);
+        const filteredReviews = parsed.filter(
+          (review) => (review?.author || '').trim().toLowerCase() !== removedAuthorName
+        );
+        window.localStorage.setItem('lammUserReviews', JSON.stringify(filteredReviews));
+        setAllReviews([...filteredReviews, ...baseReviews]);
       }
     } catch {
       setAllReviews(baseReviews);
     }
-  }, []);
+  }, [removedAuthorName]);
 
   useEffect(() => {
     const handleScroll = () => setShowScroll(window.scrollY > 200);
