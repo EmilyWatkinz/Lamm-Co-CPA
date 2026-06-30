@@ -89,11 +89,11 @@ function Resources() {
               />
               <div className="secure-content">
                 <p className="resource-placeholder-text">
-                  Lamm &amp; Company makes document delivery simple, fast, and highly secure. Our encrypted upload process is designed to protect your sensitive financial information at every step, so you can share tax documents and records with confidence. Whether you are at home, at the office, or traveling anywhere in the world, you can submit everything you need from the comfort of your computer in just minutes.
+                  Lamm &amp; Company makes document delivery simple, fast, and highly secure. Our secure upload page lets you send tax documents and records directly to our office by email from the comfort of your computer in just minutes.
                 </p>
-                <a href="/secure-upload" target="_blank" rel="noopener noreferrer" className="blog-cta-link">
+                <Link to="/secure-upload" className="blog-cta-link">
                   <strong>Upload your documents now!</strong>
-                </a>
+                </Link>
               </div>
             </div>
           </article>
