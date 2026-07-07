@@ -3,10 +3,12 @@ const { defineSecret } = require('firebase-functions/params');
 const { logger } = require('firebase-functions');
 const { initializeApp } = require('firebase-admin/app');
 const { getFirestore, FieldValue } = require('firebase-admin/firestore');
+const { getStorage } = require('firebase-admin/storage');
 const nodemailer = require('nodemailer');
 
 initializeApp();
 const firestore = getFirestore();
+const storage = getStorage();
 
 const MS_GRAPH_TENANT_ID = defineSecret('MS_GRAPH_TENANT_ID');
 const MS_GRAPH_CLIENT_ID = defineSecret('MS_GRAPH_CLIENT_ID');
@@ -42,6 +44,35 @@ async function getGraphToken() {
 }
 
 async function downloadAttachment(attachment) {
+  const fileName = attachment?.filename || attachment?.name || 'attachment';
+  const defaultContentType = attachment?.contentType || 'application/octet-stream';
+
+  if (attachment?.storagePath) {
+    try {
+      const bucket = attachment.bucket ? storage.bucket(attachment.bucket) : storage.bucket();
+      const file = bucket.file(attachment.storagePath);
+      const [exists] = await file.exists();
+
+      if (!exists) {
+        throw new Error(`Storage object not found at ${attachment.storagePath}`);
+      }
+
+      const [buffer] = await file.download();
+      const [metadata] = await file.getMetadata().catch(() => [{}]);
+
+      return {
+        name: fileName,
+        contentBytes: Buffer.from(buffer).toString('base64'),
+        contentType: metadata?.contentType || defaultContentType,
+      };
+    } catch (storageError) {
+      logger.warn('Storage path download failed, falling back to URL download', {
+        storagePath: attachment.storagePath,
+        error: storageError?.message || String(storageError),
+      });
+    }
+  }
+
   if (!attachment?.path && !attachment?.downloadUrl) {
     return null;
   }
@@ -55,9 +86,9 @@ async function downloadAttachment(attachment) {
 
   const arrayBuffer = await response.arrayBuffer();
   return {
-    name: attachment.filename || attachment.name || 'attachment',
+    name: fileName,
     contentBytes: Buffer.from(arrayBuffer).toString('base64'),
-    contentType: attachment.contentType || 'application/octet-stream',
+    contentType: defaultContentType,
   };
 }
 

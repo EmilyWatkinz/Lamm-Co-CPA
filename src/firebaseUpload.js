@@ -1,30 +1,9 @@
-import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
-import { getAuth, signInAnonymously } from 'firebase/auth';
 import firebaseApp from './firebaseClient';
 
 function hasFirebaseConfig() {
   return Boolean(firebaseApp);
-}
-
-let authPromise = null;
-
-async function ensureAnonymousAuth() {
-  const auth = getAuth(firebaseApp);
-
-  if (auth.currentUser) {
-    return auth.currentUser;
-  }
-
-  if (!authPromise) {
-    authPromise = signInAnonymously(auth)
-      .then((result) => result.user)
-      .finally(() => {
-        authPromise = null;
-      });
-  }
-
-  return authPromise;
 }
 
 export function isFirebaseUploadConfigured() {
@@ -41,6 +20,7 @@ function buildStoragePath(fileName) {
 
 async function uploadToStorage(files) {
   const storage = getStorage(firebaseApp);
+  const bucket = storage.app?.options?.storageBucket || null;
 
   const uploads = await Promise.all(
     files.map(async (file) => {
@@ -49,14 +29,13 @@ async function uploadToStorage(files) {
       await uploadBytes(fileRef, file, {
         contentType: file.type || 'application/octet-stream',
       });
-      const downloadUrl = await getDownloadURL(fileRef);
 
       return {
         name: file.name,
         size: file.size,
         type: file.type || 'application/octet-stream',
         path,
-        downloadUrl,
+        bucket,
       };
     })
   );
@@ -85,7 +64,6 @@ async function queueMailDocument(payload) {
 }
 
 export async function uploadFilesAndSendNotification({ files, clientName, clientEmail, notes }) {
-  await ensureAnonymousAuth();
   const uploadedFiles = await uploadToStorage(files);
   const payload = {
     to: 'ewatkins@lammcocpa.com',
@@ -103,9 +81,8 @@ export async function uploadFilesAndSendNotification({ files, clientName, client
     },
     attachments: uploadedFiles.map((file) => ({
       filename: file.name,
-      path: file.downloadUrl,
-      downloadUrl: file.downloadUrl,
       storagePath: file.path,
+      bucket: file.bucket,
       contentType: file.type,
       size: file.size,
     })),
