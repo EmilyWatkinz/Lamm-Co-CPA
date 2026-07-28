@@ -51,13 +51,40 @@ function App() {
       <SiteNavbar />
       <main className="main-content">
         <section className={`hero${animate ? ' fade-in-bottom' : ''}`}> 
-          <h1 className={`hero-main-heading${animate ? ' fade-in-bottom' : ''}`}>Lamm & Company CPA</h1>
-          <h2 className={`hero-subheading${animate ? ' fade-in-bottom' : ''}`}>Your trusted CPa firm since 1989</h2>
-          <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but <strong>anywhere in the world</strong>. Six locations, one commitment: your financial success—<strong>wherever you are</strong>.</p>
-          <div className={`hero-cta-group${animate ? ' fade-in-bottom' : ''}`}>
-            <Link to="/services" className="cta-btn">Explore Our Services</Link>
-            <Link to="/resources#pay-for-services" className="cta-btn cta-btn-secondary">Pay my bill</Link>
-            <Link to="/secure-upload" className="cta-btn cta-btn-secondary">Secure Document Upload</Link>
+          <div className="hero-content-grid">
+            <div className="hero-content-main">
+              <h1 className={`hero-main-heading${animate ? ' fade-in-bottom' : ''}`}>Lamm & Company CPA</h1>
+              <h2 className={`hero-subheading${animate ? ' fade-in-bottom' : ''}`}>Your trusted CPa firm since 1989</h2>
+              <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but <strong>anywhere in the world</strong>. Six locations, one commitment: your financial success—<strong>wherever you are</strong>.</p>
+              <div className={`hero-cta-group${animate ? ' fade-in-bottom' : ''}`}>
+                <Link to="/services" className="cta-btn">Explore Our Services</Link>
+                <Link to="/resources#pay-for-services" className="cta-btn cta-btn-secondary">Pay my bill</Link>
+                <Link to="/secure-upload" className="cta-btn cta-btn-secondary">Secure Document Upload</Link>
+              </div>
+            </div>
+
+            <aside className="hero-announcements" aria-label="Announcements">
+              <div className="announcements-card hero-announcements-card">
+                <p className="announcements-kicker">What&apos;s New</p>
+                <h2>Announcements</h2>
+                <ul className="announcements-list">
+                  <li>August tax deadlines are now posted in our Tax Calendar.</li>
+                  <li>Secure Document Upload is available 24/7 for current clients.</li>
+                  <li>Need help quickly? Email us at <a href="mailto:info@lammcocpa.com">info@lammcocpa.com</a>.</li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section className={`remote-highlight-section${animate ? ' fade-in-bottom' : ''}`} aria-label="Remote Services">
+          <div className="remote-highlight-card">
+            <p className="remote-highlight-kicker">Remote-First Support</p>
+            <h2>We Work With Clients Anywhere</h2>
+            <p>
+              You do not need to live in Idaho to work with us. Lamm &amp; Company provides secure, remote tax and accounting services for individuals and businesses across the United States and internationally.
+            </p>
+            <Link to="/resources#working-remotely" className="remote-highlight-link">Learn how our remote process works</Link>
           </div>
         </section>
 

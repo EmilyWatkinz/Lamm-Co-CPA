@@ -248,23 +248,8 @@ function About() {
                 ))}
               </div>
             </div>
-            {/* Shaely Robison */}
-            <div className="team-card slow-fade-up delay-1">
-              <img src="/Shaely-Pic.webp" alt="Shaely Robison" className="team-card-img" />
-              <div className="team-card-title">Shaely Robison</div>
-              <div className="team-card-role">Payroll Associate II</div>
-              <div className="team-card-bio">
-                {[
-                  "Shaely has been with Lamm & Company since Sept. of 2024.",
-                  "Her favorite thing about working with the company is there is always new things to learn.",
-                  "A fun fact about Shaely is that she enjoys design, creativity, and making things look aesthetically put together."
-                ].map((para, i) => (
-                  <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
-                ))}
-              </div>
-            </div>
             {/* Heidi Carter */}
-            <div className="team-card slow-fade-up delay-2">
+            <div className="team-card slow-fade-up delay-1">
               <img src="/NoPic-Pic.webp" alt="Heidi Carter" className="team-card-img" />
               <div className="team-card-title">Heidi Carter</div>
               <div className="team-card-role">Payroll Associate I</div>

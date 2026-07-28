@@ -138,6 +138,27 @@
   transform: translateY(0);
 }
 
+.resources-wrap .resource-card.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.resources-wrap .resource-card.reveal-on-scroll.is-visible {
+  animation: resourceCardFadeUp 0.92s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes resourceCardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .locations-fade-item {
   opacity: 0;
   transform: translateY(28px);
@@ -723,6 +744,32 @@ html, body {
   max-width: 100vw;
 }
 
+.hero-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  gap: 1.2rem;
+  align-items: end;
+}
+
+.hero-content-main {
+  max-width: 680px;
+}
+
+.hero-announcements {
+  display: flex;
+  justify-content: flex-end;
+  order: 0;
+}
+
+.hero-announcements-card {
+  width: min(100%, 420px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(144, 12, 63, 0.18);
+  border-left: 6px solid #c8a64a;
+  box-shadow: 0 10px 28px rgba(31, 6, 15, 0.2);
+  transform: translateX(-42px);
+}
+
 
 .subtitle {
   font-size: 1.3rem;
@@ -730,6 +777,110 @@ html, body {
   color: #fff8dc;
   max-width: 600px;
 }
+
+.announcements-section {
+  background: linear-gradient(135deg, #fff8e7 0%, #fff2d4 100%);
+  padding: 1.2rem 2rem 1.8rem 2rem;
+}
+
+.announcements-card {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(144, 12, 63, 0.15);
+  border-left: 6px solid #c8a64a;
+  border-radius: 1rem;
+  padding: 1.25rem 1.4rem;
+  box-shadow: 0 6px 20px rgba(65, 15, 32, 0.08);
+}
+
+.announcements-kicker {
+  margin: 0 0 0.28rem 0;
+  color: #900C3F;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.announcements-card h2 {
+  margin: 0 0 0.7rem 0;
+  color: #6f1028;
+  font-size: 1.5rem;
+}
+
+.announcements-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #4d2633;
+  line-height: 1.65;
+}
+
+.announcements-list li + li {
+  margin-top: 0.35rem;
+}
+
+.announcements-list a {
+  color: #900C3F;
+  font-weight: 700;
+}
+
+.announcements-list a:hover,
+.announcements-list a:focus {
+  color: #6f1028;
+}
+
+.remote-highlight-section {
+  background: linear-gradient(135deg, #6f1028 0%, #85143a 62%, #a31f4a 100%);
+  padding: 1.2rem 2rem 1.9rem 2rem;
+}
+
+.remote-highlight-card {
+  max-width: 1080px;
+  margin: 0 auto;
+  border-radius: 1rem;
+  padding: 1.3rem 1.4rem;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(232, 203, 113, 0.55);
+  box-shadow: 0 8px 20px rgba(36, 6, 17, 0.24);
+}
+
+.remote-highlight-kicker {
+  margin: 0 0 0.3rem 0;
+  color: #f0d58b;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.remote-highlight-card h2 {
+  margin: 0 0 0.75rem 0;
+  color: #fff;
+  font-size: 1.68rem;
+}
+
+.remote-highlight-card p {
+  margin: 0;
+  color: #f9efda;
+  max-width: 890px;
+  line-height: 1.65;
+}
+
+.remote-highlight-link {
+  display: inline-block;
+  margin-top: 0.95rem;
+  color: #f7d981;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.remote-highlight-link:hover,
+.remote-highlight-link:focus {
+  color: #ffe8a9;
+}
+
 .mission-section {
   background: linear-gradient(135deg, #fffaf1 0%, #f7ede0 100%);
   padding: 2.5rem 2rem;
@@ -1884,6 +2035,13 @@ html, body {
   border-radius: 1rem;
   padding: 1.4rem;
   box-shadow: 0 5px 16px rgba(74, 13, 35, 0.09);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-card:hover,
+.resource-card:focus-within {
+  background: #f7efe0;
+  box-shadow: 0 8px 20px rgba(74, 13, 35, 0.14);
 }
 
 .resource-card h2 {
@@ -2087,6 +2245,84 @@ html, body {
   line-height: 1.85;
 }
 
+.remote-resource-card {
+  border-left-color: #900C3F;
+  background: #fff;
+}
+
+.remote-resource-card h2 {
+  margin-bottom: 0.75rem;
+}
+
+.remote-work-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.remote-work-img {
+  max-width: 390px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.remote-work-content {
+  flex: 0 1 520px;
+  max-width: 520px;
+  min-width: 250px;
+}
+
+.remote-resource-card .resource-placeholder-text {
+  font-size: 1.12rem;
+  line-height: 1.8;
+  max-width: 980px;
+}
+
+.remote-resource-note {
+  margin-top: 0.8rem;
+}
+
+.documents-resource-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.documents-resource-img {
+  max-width: 390px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.documents-resource-content {
+  flex: 0 1 520px;
+  max-width: 520px;
+  min-width: 250px;
+}
+
+.documents-page-wrap {
+  min-height: 65vh;
+}
+
+.documents-list-card {
+  max-width: 860px;
+}
+
+.documents-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #4a3a3f;
+}
+
+.documents-list li {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.documents-note {
+  margin-top: 0.9rem;
+}
+
 .services-wrap {
   max-width: 1150px;
   margin: 2.2rem auto 0 auto;
@@ -2278,6 +2514,22 @@ html, body {
     max-width: 100%;
   }
 
+  .remote-work-layout {
+    flex-direction: column;
+  }
+
+  .remote-work-img {
+    max-width: 100%;
+  }
+
+  .documents-resource-layout {
+    flex-direction: column;
+  }
+
+  .documents-resource-img {
+    max-width: 100%;
+  }
+
   .resources-hero {
     padding: 1.5rem 1.1rem 1.3rem 1.1rem;
     flex-direction: column;
@@ -2369,6 +2621,21 @@ html, body {
     min-height: 520px;
     padding: 7rem 2rem 4rem 2.5rem;
   }
+  .hero-content-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .hero-content-main {
+    max-width: 100%;
+  }
+  .hero-announcements {
+    justify-content: flex-start;
+    order: 0;
+  }
+  .hero-announcements-card {
+    width: min(100%, 560px);
+    transform: none;
+  }
   .mission-section {
     grid-template-columns: 1fr;
     padding: 1.25rem 0.75rem 1.75rem 0.75rem;
@@ -2414,6 +2681,50 @@ html, body {
     border-radius: 0.85rem;
     white-space: normal;
     word-break: break-word;
+  }
+
+  .hero-announcements-card {
+    width: 100%;
+  }
+
+  .announcements-section {
+    padding: 1rem 0.9rem 1.2rem 0.9rem;
+  }
+
+  .announcements-card {
+    padding: 1rem 0.95rem;
+    border-left-width: 4px;
+  }
+
+  .announcements-card h2 {
+    font-size: 1.24rem;
+  }
+
+  .announcements-list {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .remote-highlight-section {
+    padding: 1rem 0.9rem 1.35rem 0.9rem;
+  }
+
+  .remote-highlight-card {
+    padding: 1rem 0.95rem;
+  }
+
+  .remote-highlight-card h2 {
+    font-size: 1.24rem;
+  }
+
+  .remote-highlight-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .remote-highlight-link {
+    margin-top: 0.75rem;
+    font-size: 0.92rem;
   }
 
   /* ---- Home locations ---- */

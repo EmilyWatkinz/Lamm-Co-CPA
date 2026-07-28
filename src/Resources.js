@@ -16,11 +16,13 @@ function Resources() {
 
   useEffect(() => {
     const revealNodes = Array.from(document.querySelectorAll(
-      '.resources-wrap .resources-hero, .resources-wrap .resource-card'
+      '.resources-wrap .resource-card'
     ));
 
-    revealNodes.forEach((node) => {
+    revealNodes.forEach((node, index) => {
+      node.classList.remove('is-visible');
       node.classList.add('reveal-on-scroll');
+      node.style.setProperty('--reveal-delay', `${Math.min(index * 90, 360)}ms`);
     });
 
     const observer = new window.IntersectionObserver(
@@ -32,7 +34,7 @@ function Resources() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+      { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
     );
 
     revealNodes.forEach((node) => observer.observe(node));
@@ -58,6 +60,46 @@ function Resources() {
         </section>
 
         <section className="resources-grid" aria-label="Lamm & Company resource library">
+          <article className="resource-card" id="downloadable-documents">
+            <h2>Downloadable Documents</h2>
+            <div className="documents-resource-layout">
+              <img
+                src={`${process.env.PUBLIC_URL}/documents%20pic.jpg`}
+                alt="Downloadable client documents"
+                className="resource-card-img documents-resource-img"
+              />
+              <div className="documents-resource-content">
+                <p className="resource-placeholder-text">
+                  Access helpful client documents in one place, including organizers, checklists, and planning worksheets that make tax prep and accounting tasks easier.
+                  This section is designed to save you time, keep records organized, and help you prepare for meetings and filing deadlines.
+                </p>
+                <Link to="/resources/documents" className="blog-cta-link">
+                  <strong>View available documents</strong>
+                </Link>
+              </div>
+            </div>
+          </article>
+
+          <article className="resource-card remote-resource-card" id="working-remotely">
+            <h2>Working Remotely</h2>
+            <div className="remote-work-layout">
+              <img
+                src="/remote work.webp"
+                alt="Remote work services"
+                className="resource-card-img remote-work-img"
+              />
+              <div className="remote-work-content">
+                <p className="resource-placeholder-text">
+                  Lamm &amp; Company is set up to serve clients remotely from start to finish, including tax prep, bookkeeping, accounting support, planning, and advisory services.
+                  We work with individuals, families, and businesses in Idaho, across the U.S., and internationally.
+                </p>
+                <p className="resource-placeholder-text remote-resource-note">
+                  Our process includes secure document upload, virtual meetings, encrypted communication, and responsive support throughout the year so you can get expert guidance no matter where you are located.
+                </p>
+              </div>
+            </div>
+          </article>
+
           <article className="resource-card" id="track-refund">
             <h2>Track Your Refund</h2>
             <div className="track-refund-layout">

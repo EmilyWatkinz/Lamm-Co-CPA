@@ -5,6 +5,7 @@ import App from './App';
 import About from './About';
 import Services from './Services';
 import Resources from './Resources';
+import DownloadableDocuments from './DownloadableDocuments';
 import Blog from './Blog';
 import BlogPost1 from './BlogPost1';
 import BlogPost2 from './BlogPost2';
@@ -26,6 +27,7 @@ root.render(
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/resources" element={<Resources />} />
+        <Route path="/resources/documents" element={<DownloadableDocuments />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/setting-up-new-business" element={<BlogPost1 />} />
         <Route path="/blog/tax-prep-4-u" element={<BlogPost2 />} />
