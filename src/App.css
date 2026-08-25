@@ -664,31 +664,40 @@ html, body {
 @media (max-width: 700px) {
   .hero {
     min-height: 450px;
-    padding: 6.1rem 1rem 3.3rem 1rem;
+    padding: 6.1rem 0.75rem 3.3rem 0.75rem;
   }
 
   .hero-content-grid {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
+    width: calc(100% - 0.5rem);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-content-main {
     max-width: 100%;
     text-align: center;
+    width: 100%;
   }
 
   .hero-announcements {
     width: 100%;
     justify-content: center;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    box-sizing: border-box;
   }
 
   .hero-announcements-card {
     transform: none;
-    width: min(100%, 420px);
+    width: calc(100% - 0.4rem);
+    max-width: 420px;
     padding: 1rem 1.15rem 1.15rem 1rem;
-    margin-left: 0.35rem;
-    margin-right: 0.65rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    box-sizing: border-box;
   }
 
   .hero-main-heading {
