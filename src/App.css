@@ -686,8 +686,9 @@ html, body {
   .hero-announcements-card {
     transform: none;
     width: min(100%, 420px);
-    padding: 1rem 1rem 1.15rem 1rem;
-    margin-inline: 0.35rem;
+    padding: 1rem 1.15rem 1.15rem 1rem;
+    margin-left: 0.35rem;
+    margin-right: 0.65rem;
   }
 
   .hero-main-heading {
