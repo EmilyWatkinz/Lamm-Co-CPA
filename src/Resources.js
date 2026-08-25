@@ -70,8 +70,8 @@ function Resources() {
               />
               <div className="documents-resource-content">
                 <p className="resource-placeholder-text">
-                  Access helpful client documents in one place, including organizers, checklists, and planning worksheets that make tax prep and accounting tasks easier.
-                  This section is designed to save you time, keep records organized, and help you prepare for meetings and filing deadlines.
+                  A convenient place to find useful client documents and materials for your tax and accounting needs.
+                  We will continue adding new resources as they become available.
                 </p>
                 <Link to="/resources/documents" className="blog-cta-link">
                   <strong>View available documents</strong>
