@@ -42,7 +42,12 @@ const baseReviews = [
   },
 ];
 
-const removedAuthorNames = new Set(['emily smith', 'sara smith']);
+const removedAuthorNames = new Set([
+  'emily smith',
+  'sara smith',
+  'sarah smith',
+  'jane doe',
+]);
 
 function Reviews() {
   const googleReviewPageUrl =
