@@ -667,6 +667,27 @@ html, body {
     padding: 6.1rem 1rem 3.3rem 1rem;
   }
 
+  .hero-content-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero-content-main {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-announcements {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-announcements-card {
+    transform: none;
+    width: min(100%, 420px);
+  }
+
   .hero-main-heading {
     font-size: clamp(1.65rem, 8.2vw, 2.05rem);
     line-height: 1.2;
@@ -681,12 +702,14 @@ html, body {
     font-size: 1rem;
     line-height: 1.5;
     margin-bottom: 1.5rem;
+    max-width: 100%;
   }
 
   .hero-cta-group {
     width: 100%;
     flex-direction: column;
     align-items: stretch;
+    justify-content: center;
     gap: 0.65rem;
   }
 
