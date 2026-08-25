@@ -686,6 +686,8 @@ html, body {
   .hero-announcements-card {
     transform: none;
     width: min(100%, 420px);
+    padding: 1rem 1rem 1.15rem 1rem;
+    margin-inline: 0.35rem;
   }
 
   .hero-main-heading {
@@ -714,8 +716,12 @@ html, body {
   }
 
   .hero-cta-group .cta-btn {
-    width: 100%;
+    width: min(100%, 320px);
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .about-content,
