@@ -16,7 +16,7 @@ const upload = multer({
 });
 
 const port = Number(process.env.SERVER_PORT || 5001);
-const recipientEmail = process.env.UPLOAD_RECIPIENT_EMAIL || 'ewatkins@lammcocpa.com';
+const recipientEmail = process.env.UPLOAD_RECIPIENT_EMAIL || 'ar@lammcocpa.com';
 const graphSimpleSendMaxBytes = Number(process.env.GRAPH_SIMPLE_SEND_MAX_BYTES || 3500000);
 
 app.use((request, response, next) => {

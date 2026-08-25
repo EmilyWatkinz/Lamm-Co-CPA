@@ -3,15 +3,6 @@ import { Link } from 'react-router-dom';
 import './App.css';
 import SiteNavbar from './components/SiteNavbar';
 
-const upcomingDocuments = [
-  'Individual Tax Organizer',
-  'Business Tax Organizer',
-  'Bookkeeping Intake Checklist',
-  'Payroll Onboarding Checklist',
-  'Quarterly Estimated Tax Worksheet',
-  'Year-End Records Checklist',
-];
-
 function DownloadableDocuments() {
   const [showScroll, setShowScroll] = useState(false);
 
@@ -31,28 +22,11 @@ function DownloadableDocuments() {
         <section className="resources-hero documents-hero">
           <div className="resources-hero-main">
             <h1>Downloadable Documents</h1>
-            <p>
-              This page lists the client documents you will be able to access soon.
-              We will continue adding resources to make preparation faster and simpler.
-            </p>
+            <p>documents coming soon</p>
           </div>
           <Link to="/resources" className="resources-deadlines-btn">
             BACK TO RESOURCES
           </Link>
-        </section>
-
-        <section className="resources-grid" aria-label="Upcoming downloadable documents">
-          <article className="resource-card documents-list-card">
-            <h2>Documents You Will Have Access To</h2>
-            <ul className="documents-list">
-              {upcomingDocuments.map((doc) => (
-                <li key={doc}>{doc}</li>
-              ))}
-            </ul>
-            <p className="resource-placeholder-text documents-note">
-              Additional forms and templates will be added here in future updates.
-            </p>
-          </article>
         </section>
       </main>
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import SiteNavbar from './components/SiteNavbar';
-import { isFirebaseUploadConfigured, uploadFilesAndSendNotification } from './firebaseUpload';
 
 function SecureUpload() {
   const [showScroll, setShowScroll] = useState(false);
@@ -13,7 +12,6 @@ function SecureUpload() {
   const [uploadComplete, setUploadComplete] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [statusType, setStatusType] = useState('info');
-  const useFirebaseUpload = isFirebaseUploadConfigured();
   const uploadEndpoint = process.env.REACT_APP_UPLOAD_API_URL || (window.location.port === '3000'
     ? 'http://localhost:5001/api/secure-upload'
     : '/api/secure-upload');
@@ -44,35 +42,24 @@ function SecureUpload() {
     setStatusMessage('');
 
     try {
-      let payload = {};
+      const formData = new FormData();
+      selectedFiles.forEach((file) => {
+        formData.append('files', file);
+      });
 
-      if (useFirebaseUpload) {
-        payload = await uploadFilesAndSendNotification({
-          files: selectedFiles,
-          clientName,
-          clientEmail,
-          notes,
-        });
-      } else {
-        const formData = new FormData();
-        selectedFiles.forEach((file) => {
-          formData.append('files', file);
-        });
+      if (clientName) formData.append('clientName', clientName);
+      if (clientEmail) formData.append('clientEmail', clientEmail);
+      if (notes) formData.append('notes', notes);
 
-        if (clientName) formData.append('clientName', clientName);
-        if (clientEmail) formData.append('clientEmail', clientEmail);
-        if (notes) formData.append('notes', notes);
+      const response = await fetch(uploadEndpoint, {
+        method: 'POST',
+        body: formData,
+      });
 
-        const response = await fetch(uploadEndpoint, {
-          method: 'POST',
-          body: formData,
-        });
+      const payload = await response.json().catch(() => ({}));
 
-        payload = await response.json().catch(() => ({}));
-
-        if (!response.ok) {
-          throw new Error(payload.message || `Upload failed with status ${response.status}`);
-        }
+      if (!response.ok) {
+        throw new Error(payload.message || `Upload failed with status ${response.status}`);
       }
 
       setStatusType('success');
