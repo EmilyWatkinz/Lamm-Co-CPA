@@ -1,7 +1,8 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 import Reviews from './Reviews';
+import PayBill from './PayBill';
 
 beforeEach(() => {
   window.localStorage.clear();
@@ -11,6 +12,11 @@ beforeEach(() => {
     unobserve() {}
     disconnect() {}
   };
+  Object.defineProperty(window, 'location', {
+    configurable: true,
+    value: { href: '' },
+    writable: true,
+  });
 });
 
 test('renders home page heading', () => {
@@ -45,4 +51,24 @@ test('filters out Jane Doe and Sarah Smith reviews', async () => {
   });
 
   expect(screen.getAllByText(/Pamela Vasquez/i).length).toBeGreaterThan(0);
+});
+
+test('creates a payment link request email for ar@lammcocpa.com', () => {
+  render(
+    <MemoryRouter>
+      <PayBill />
+    </MemoryRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/full name/i), { target: { value: 'Jane Smith' } });
+  fireEvent.change(screen.getByLabelText(/email address/i), { target: { value: 'jane@example.com' } });
+  fireEvent.change(screen.getByLabelText(/phone number/i), { target: { value: '208-555-0133' } });
+  fireEvent.change(screen.getByLabelText(/business or client name/i), { target: { value: 'Smith Consulting' } });
+  fireEvent.change(screen.getByLabelText(/amount due/i), { target: { value: '$500' } });
+  fireEvent.change(screen.getByLabelText(/additional notes/i), { target: { value: 'Need a secure payment link.' } });
+
+  fireEvent.click(screen.getByRole('button', { name: /request link for payment/i }));
+
+  expect(window.location.href).toContain('mailto:ar@lammcocpa.com');
+  expect(window.location.href).toContain('Jane%20Smith');
 });

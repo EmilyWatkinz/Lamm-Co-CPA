@@ -58,7 +58,7 @@ function App() {
               <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but <strong>anywhere in the world</strong>. Six locations, one commitment: your financial success—<strong>wherever you are</strong>.</p>
               <div className={`hero-cta-group${animate ? ' fade-in-bottom' : ''}`}>
                 <Link to="/services" className="cta-btn">Explore Our Services</Link>
-                <Link to="/resources#pay-for-services" className="cta-btn cta-btn-secondary">Pay my bill</Link>
+                <Link to="/pay-bill" className="cta-btn cta-btn-secondary">Pay my bill</Link>
                 <Link to="/secure-upload" className="cta-btn cta-btn-secondary">Secure Document Upload</Link>
               </div>
             </div>
