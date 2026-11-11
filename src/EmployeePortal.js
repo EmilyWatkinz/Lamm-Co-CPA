@@ -136,11 +136,6 @@ function EmployeePortal() {
               {loginError && <p className="employee-login-error">{loginError}</p>}
 
               <button type="submit" className="employee-portal-btn">Log In</button>
-              {isLoggedIn && (
-                <button type="button" className="employee-portal-btn employee-portal-btn-alt" onClick={handleLogout}>
-                  Log Out
-                </button>
-              )}
             </form>
           </div>
 
@@ -158,6 +153,12 @@ function EmployeePortal() {
 
         {isLoggedIn && (
           <>
+            <section className="employee-portal-authenticated-actions">
+              <button type="button" className="employee-portal-btn employee-portal-btn-alt" onClick={handleLogout}>
+                Log Out
+              </button>
+            </section>
+
             <section className="employee-portal-grid employee-portal-authenticated-grid">
               <div className="employee-portal-card employee-timeoff-card">
                 <h2>Request Time Off</h2>
