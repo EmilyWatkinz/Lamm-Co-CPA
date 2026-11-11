@@ -13,6 +13,7 @@ jest.mock('./firebaseUpload', () => ({
 
 beforeEach(() => {
   window.localStorage.clear();
+  window.confirm = jest.fn(() => true);
   window.IntersectionObserver = class {
     constructor() {}
     observe() {}
@@ -57,6 +58,28 @@ test('requires employee login before showing time off and announcements', () => 
 
   expect(screen.getByRole('button', { name: /request time off/i })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: /view employee documents/i })).toBeInTheDocument();
+  expect(screen.getByText(/employee updates & announcements/i)).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /log out/i })).toBeInTheDocument();
+
+  fireEvent.click(screen.getByRole('button', { name: /log out/i }));
+  expect(screen.getByRole('button', { name: /log in/i })).toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: /request time off/i })).not.toBeInTheDocument();
+});
+
+test('accepts common employee email formats with dots in the local part', () => {
+  render(
+    <MemoryRouter initialEntries={['/employee-portal']}>
+      <Routes>
+        <Route path="/employee-portal" element={<EmployeePortal />} />
+      </Routes>
+    </MemoryRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/employee email/i), { target: { value: 'emily.watkins@lammcocpa.com' } });
+  fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'secure-password' } });
+  fireEvent.click(screen.getByRole('button', { name: /log in/i }));
+
+  expect(screen.getByRole('button', { name: /request time off/i })).toBeInTheDocument();
   expect(screen.getByText(/employee updates & announcements/i)).toBeInTheDocument();
 });
 

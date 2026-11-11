@@ -25,7 +25,7 @@ function EmployeePortal() {
       return;
     }
 
-    const companyEmailPattern = /^[a-zA-Z][a-zA-Z]+@lammcocpa\.com$/i;
+    const companyEmailPattern = /^[A-Za-z0-9._%+\-]+@lammcocpa\.com$/i;
     if (!companyEmailPattern.test(trimmedEmail)) {
       setLoginError('Use your employee email address ending in @lammcocpa.com.');
       return;
@@ -34,6 +34,27 @@ function EmployeePortal() {
     setLoginError('');
     setIsLoggedIn(true);
     setPassword('');
+  };
+
+  const handleLogout = () => {
+    let shouldLogout = true;
+
+    if (typeof window !== 'undefined' && typeof window.confirm === 'function') {
+      try {
+        shouldLogout = window.confirm('Are you sure you want to log out?');
+      } catch {
+        shouldLogout = true;
+      }
+    }
+
+    if (!shouldLogout) {
+      return;
+    }
+
+    setIsLoggedIn(false);
+    setEmployeeEmail('');
+    setPassword('');
+    setLoginError('');
   };
 
   const handleTimeOffSubmit = async (event) => {
@@ -115,6 +136,11 @@ function EmployeePortal() {
               {loginError && <p className="employee-login-error">{loginError}</p>}
 
               <button type="submit" className="employee-portal-btn">Log In</button>
+              {isLoggedIn && (
+                <button type="button" className="employee-portal-btn employee-portal-btn-alt" onClick={handleLogout}>
+                  Log Out
+                </button>
+              )}
             </form>
           </div>
 
