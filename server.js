@@ -17,6 +17,7 @@ const upload = multer({
 
 const port = Number(process.env.SERVER_PORT || 5001);
 const recipientEmail = process.env.UPLOAD_RECIPIENT_EMAIL || 'ar@lammcocpa.com';
+const timeOffRecipientEmail = process.env.TIME_OFF_RECIPIENT_EMAIL || 'lcolligan@lammcocpa.com';
 const graphSimpleSendMaxBytes = Number(process.env.GRAPH_SIMPLE_SEND_MAX_BYTES || 3500000);
 
 app.use((request, response, next) => {
@@ -205,6 +206,56 @@ app.post('/api/secure-upload', upload.array('files', 10), async (request, respon
     console.error('Secure upload send error:', error);
     return response.status(500).json({
       message: error.message || 'We could not send the files by email. Check your settings and try again.',
+    });
+  }
+});
+
+app.post('/api/employee-timeoff', express.json(), async (request, response) => {
+  try {
+    const {
+      employeeEmail = '',
+      timeOffType = '',
+      startDate = '',
+      endDate = '',
+      reason = '',
+    } = request.body || {};
+
+    if (!employeeEmail || !timeOffType || !startDate || !endDate || !reason) {
+      return response.status(400).json({ message: 'Please complete all time off request fields.' });
+    }
+
+    const subject = `Time Off Request - ${timeOffType}`;
+    const textBody = [
+      'A new time off request has been submitted.',
+      `Employee email: ${employeeEmail}`,
+      `Time off type: ${timeOffType}`,
+      `Start date: ${startDate}`,
+      `End date: ${endDate}`,
+      `Reason: ${reason}`,
+    ].join('\n');
+
+    const transporter = createTransporter();
+    if (!transporter) {
+      return response.status(500).json({
+        message: 'Email settings are not configured. Set SMTP settings before submitting time off requests.',
+      });
+    }
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_FROM || process.env.SMTP_USER,
+      to: timeOffRecipientEmail,
+      replyTo: employeeEmail || undefined,
+      subject,
+      text: textBody,
+    });
+
+    return response.json({
+      message: `Time off request sent to ${timeOffRecipientEmail}.`,
+    });
+  } catch (error) {
+    console.error('Employee time off send error:', error);
+    return response.status(500).json({
+      message: error.message || 'We could not submit the time off request. Please try again.',
     });
   }
 });

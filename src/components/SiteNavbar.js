@@ -57,6 +57,7 @@ function SiteNavbar({ blogTo = '/blog' }) {
         <li className="nav-item"><Link to="/resources" onClick={closeMenu}>Resources</Link></li>
         <li className="nav-item"><Link to="/locations" onClick={closeMenu}>Locations</Link></li>
         <li className="nav-item"><Link to="/reviews" onClick={closeMenu}>Reviews</Link></li>
+        <li className="nav-item"><Link to="/employee-portal" onClick={closeMenu}>Employee Portal</Link></li>
         <li className="nav-item"><Link to={blogTo} onClick={closeMenu}>Blog</Link></li>
       </ul>
 

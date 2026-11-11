@@ -1,9 +1,10 @@
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import Reviews from './Reviews';
 import PayBill from './PayBill';
 import SecureUpload from './SecureUpload';
+import EmployeePortal from './EmployeePortal';
 
 jest.mock('./firebaseUpload', () => ({
   isFirebaseUploadConfigured: () => true,
@@ -33,6 +34,60 @@ test('renders home page heading', () => {
   );
   const heading = screen.getByText(/Lamm & Company CPA/i);
   expect(heading).toBeInTheDocument();
+});
+
+test('requires employee login before showing time off and announcements', () => {
+  render(
+    <MemoryRouter initialEntries={['/employee-portal']}>
+      <Routes>
+        <Route path="/employee-portal" element={<EmployeePortal />} />
+      </Routes>
+    </MemoryRouter>
+  );
+
+  expect(screen.getByRole('heading', { name: /employee portal/i })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /log in/i })).toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: /request time off/i })).not.toBeInTheDocument();
+  expect(screen.queryByText(/employee updates & announcements/i)).not.toBeInTheDocument();
+
+  fireEvent.change(screen.getByLabelText(/employee email/i), { target: { value: 'ewatkins@lammcocpa.com' } });
+  fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'secure-password' } });
+  fireEvent.click(screen.getByRole('button', { name: /log in/i }));
+
+  expect(screen.getByRole('button', { name: /request time off/i })).toBeInTheDocument();
+  expect(screen.getByText(/employee updates & announcements/i)).toBeInTheDocument();
+});
+
+test('sends time off requests to the internal recipient through the backend API', async () => {
+  const fetchMock = jest.spyOn(global, 'fetch').mockResolvedValue({
+    ok: true,
+    json: async () => ({ message: 'Time off request sent.' }),
+  });
+
+  render(
+    <MemoryRouter initialEntries={['/employee-portal']}>
+      <Routes>
+        <Route path="/employee-portal" element={<EmployeePortal />} />
+      </Routes>
+    </MemoryRouter>
+  );
+
+  fireEvent.change(screen.getByLabelText(/employee email/i), { target: { value: 'ewatkins@lammcocpa.com' } });
+  fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'secure-password' } });
+  fireEvent.click(screen.getByRole('button', { name: /log in/i }));
+
+  fireEvent.change(screen.getByLabelText(/start date/i), { target: { value: '2026-12-10' } });
+  fireEvent.change(screen.getByLabelText(/end date/i), { target: { value: '2026-12-12' } });
+  fireEvent.change(screen.getByLabelText(/reason/i), { target: { value: 'Family vacation' } });
+  fireEvent.click(screen.getByRole('button', { name: /request time off/i }));
+
+  await waitFor(() => {
+    expect(fetchMock).toHaveBeenCalled();
+    expect(fetchMock.mock.calls[0][0]).toContain('/api/employee-timeoff');
+    expect(fetchMock.mock.calls[0][1]).toEqual(expect.objectContaining({ method: 'POST' }));
+  });
+
+  fetchMock.mockRestore();
 });
 
 test('filters out Jane Doe and Sarah Smith reviews', async () => {

@@ -15,6 +15,7 @@ import PayBill from './PayBill';
 import Reviews from './Reviews';
 import TaxCalendar from './TaxCalendar';
 import Locations from './Locations';
+import EmployeePortal from './EmployeePortal';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
@@ -37,6 +38,7 @@ root.render(
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/tax-calendar" element={<TaxCalendar />} />
         <Route path="/locations" element={<Locations />} />
+        <Route path="/employee-portal" element={<EmployeePortal />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,0 +1,198 @@
+import React, { useState } from 'react';
+import './App.css';
+import SiteNavbar from './components/SiteNavbar';
+
+function EmployeePortal() {
+  const [employeeEmail, setEmployeeEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginError, setLoginError] = useState('');
+  const [timeOffType, setTimeOffType] = useState('Vacation');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [reason, setReason] = useState('');
+  const [timeOffStatus, setTimeOffStatus] = useState('');
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const trimmedEmail = employeeEmail.trim();
+    const trimmedPassword = password.trim();
+
+    if (!trimmedEmail || !trimmedPassword) {
+      setLoginError('Please enter your company email and password.');
+      return;
+    }
+
+    const companyEmailPattern = /^[a-zA-Z][a-zA-Z]+@lammcocpa\.com$/i;
+    if (!companyEmailPattern.test(trimmedEmail)) {
+      setLoginError('Use your employee email address ending in @lammcocpa.com.');
+      return;
+    }
+
+    setLoginError('');
+    setIsLoggedIn(true);
+    setPassword('');
+  };
+
+  const handleTimeOffSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!startDate || !endDate || !reason.trim()) {
+      setTimeOffStatus('Please complete the start date, end date, and reason before submitting.');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/employee-timeoff', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          employeeEmail,
+          timeOffType,
+          startDate,
+          endDate,
+          reason,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({ message: 'Time off request sent.' }));
+
+      if (!response.ok) {
+        throw new Error(payload.message || 'Unable to submit time off request.');
+      }
+
+      setTimeOffStatus(payload.message || 'Time off request sent successfully.');
+      setReason('');
+      setStartDate('');
+      setEndDate('');
+    } catch (error) {
+      setTimeOffStatus(error.message || 'Unable to submit time off request.');
+    }
+  };
+
+  return (
+    <div className="resources-page classy-about-bg">
+      <SiteNavbar blogTo="/blog" />
+
+      <main className="employee-portal-page">
+        <section className="employee-portal-hero">
+          <p className="employee-portal-kicker">Team Access</p>
+          <h1>Employee Portal</h1>
+        </section>
+
+        <section className="employee-portal-grid">
+          <div className="employee-portal-card employee-login-card">
+            <h2>Employee Login</h2>
+            <form onSubmit={handleLogin} className="employee-login-form">
+              <label className="employee-field">
+                <span>Employee Email</span>
+                <input
+                  type="email"
+                  value={employeeEmail}
+                  onChange={(event) => setEmployeeEmail(event.target.value)}
+                  placeholder="Employee email"
+                  autoComplete="username"
+                />
+              </label>
+
+              <label className="employee-field">
+                <span>Password</span>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="Password"
+                  autoComplete="current-password"
+                />
+              </label>
+
+              {loginError && <p className="employee-login-error">{loginError}</p>}
+
+              <button type="submit" className="employee-portal-btn">Log In</button>
+            </form>
+          </div>
+
+          <div className="employee-portal-card employment-card">
+            <h2>Join Our Team</h2>
+            <p>We are always looking for talented professionals who want to grow with our firm.</p>
+            <a
+              href="mailto:careers@lammcocpa.com?subject=Employment%20Application"
+              className="employee-hiring-link"
+            >
+              We&apos;re Hiring
+            </a>
+          </div>
+        </section>
+
+        {isLoggedIn && (
+          <>
+            <section className="employee-portal-grid employee-portal-authenticated-grid">
+              <div className="employee-portal-card employee-timeoff-card">
+                <h2>Request Time Off</h2>
+                <form onSubmit={handleTimeOffSubmit} className="employee-timeoff-form">
+                  <label className="employee-field">
+                    <span>Type</span>
+                    <select value={timeOffType} onChange={(event) => setTimeOffType(event.target.value)}>
+                      <option value="Vacation">Vacation</option>
+                      <option value="Sick">Sick</option>
+                      <option value="Personal">Personal</option>
+                      <option value="Holiday">Holiday</option>
+                    </select>
+                  </label>
+
+                  <div className="employee-date-row">
+                    <label className="employee-field">
+                      <span>Start date</span>
+                      <input type="date" value={startDate} onChange={(event) => setStartDate(event.target.value)} />
+                    </label>
+
+                    <label className="employee-field">
+                      <span>End date</span>
+                      <input type="date" value={endDate} onChange={(event) => setEndDate(event.target.value)} />
+                    </label>
+                  </div>
+
+                  <label className="employee-field">
+                    <span>Reason</span>
+                    <textarea
+                      rows="4"
+                      value={reason}
+                      onChange={(event) => setReason(event.target.value)}
+                      placeholder="Brief reason for your request"
+                    />
+                  </label>
+
+                  <button type="submit" className="employee-portal-btn employee-portal-btn-alt">Request Time Off</button>
+                </form>
+                {timeOffStatus && <p className="employee-login-error">{timeOffStatus}</p>}
+              </div>
+
+              <div className="employee-portal-card employee-announcements-card">
+                <h2>Employee Updates &amp; Announcements</h2>
+                <ul className="employee-announcement-list">
+                  <li>Tax season readiness begins in January. Please confirm your availability for busy-season support.</li>
+                  <li>We are excited to announce the opening of our new Boise location, expanding access to local support and services.</li>
+                  <li>New employee handbooks and policy updates are available in the shared drive.</li>
+                </ul>
+              </div>
+            </section>
+          </>
+        )}
+      </main>
+
+      <footer className="footer">
+        &copy; {new Date().getFullYear()} Lamm & Company. All rights reserved.{' '}
+        <a href="https://www.facebook.com/lammcocpa/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook" title="Facebook">
+          <span className="social-icon social-icon-fb" aria-hidden="true">f</span>
+        </a>{' '}
+        <a href="https://www.linkedin.com/company/lamm-&-company-cpa/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn" title="LinkedIn">
+          <span className="social-icon social-icon-in" aria-hidden="true">in</span>
+        </a>
+      </footer>
+    </div>
+  );
+}
+
+export default EmployeePortal;

@@ -54,7 +54,7 @@ function App() {
           <div className="hero-content-grid">
             <div className="hero-content-main">
               <h1 className={`hero-main-heading${animate ? ' fade-in-bottom' : ''}`}>Lamm & Company CPA</h1>
-              <h2 className={`hero-subheading${animate ? ' fade-in-bottom' : ''}`}>Your trusted CPa firm since 1989</h2>
+              <h2 className={`hero-subheading${animate ? ' fade-in-bottom' : ''}`}>Your trusted CPA firm since 1989</h2>
               <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but <strong>anywhere in the world</strong>. Six locations, one commitment: your financial success—<strong>wherever you are</strong>.</p>
               <div className={`hero-cta-group${animate ? ' fade-in-bottom' : ''}`}>
                 <Link to="/services" className="cta-btn">Explore Our Services</Link>
@@ -68,7 +68,7 @@ function App() {
                 <p className="announcements-kicker">What&apos;s New</p>
                 <h2>Announcements</h2>
                 <ul className="announcements-list">
-                  <li>August tax deadlines are now posted in our Tax Calendar.</li>
+                  <li>Get ready for the upcoming tax season starting in January. If you would like to get in touch with us, <a href="https://forms.gle/your-intake-form-link" target="_blank" rel="noopener noreferrer">request an intake form here</a>.</li>
                   <li>Secure Document Upload is available 24/7 for current clients.</li>
                   <li>Need help quickly? Email us at <a href="mailto:info@lammcocpa.com">info@lammcocpa.com</a>.</li>
                 </ul>
