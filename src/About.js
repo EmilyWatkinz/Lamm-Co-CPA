@@ -229,6 +229,35 @@ function About() {
                 ))}
               </div>
             </div>
+            {/* Alexandra Lee */}
+            <div className="team-card slow-fade-up delay-3">
+              <img src="/NoPic-Pic.webp" alt="Alexandra Lee" className="team-card-img" />
+              <div className="team-card-title">Alexandra Lee</div>
+              <div className="team-card-role">Tax Associate</div>
+              <div className="team-card-bio">
+                {[
+                  "Alexandra joined the Tax Team at Lamm & Company and is excited to grow with the firm.",
+                  "Bio coming soon."
+                ].map((para, i) => (
+                  <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
+                ))}
+              </div>
+            </div>
+            {/* Matthew Stockman */}
+            <div className="team-card slow-fade-up delay-4">
+              <img src="/Unknown Man.jpg" alt="Matthew Stockman" className="team-card-img" />
+              <div className="team-card-title">Matthew Stockman</div>
+              <div className="team-card-role">Tax Associate</div>
+              <div className="team-card-bio">
+                {[
+                  "Matthew brings five years of experience in the tax profession and a strong desire to keep learning and growing in the field.",
+                  "So far, his favorite part of working at Lamm & Company is the supportive team atmosphere and the opportunity to continue developing his skills.",
+                  "Outside of work, Matthew enjoys spending time outdoors, especially golfing, snowboarding, and riding his dirtbike."
+                ].map((para, i) => (
+                  <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
+                ))}
+              </div>
+            </div>
           </div>
         )}
         {selectedTeam === 'Payroll Team' && (
@@ -248,16 +277,15 @@ function About() {
                 ))}
               </div>
             </div>
-            {/* Heidi Carter */}
-            <div className="team-card slow-fade-up delay-1">
-              <img src="/NoPic-Pic.webp" alt="Heidi Carter" className="team-card-img" />
-              <div className="team-card-title">Heidi Carter</div>
+            {/* Sandra Robinson */}
+            <div className="team-card slow-fade-up delay-2">
+              <img src="/NoPic-Pic.webp" alt="Sandra Robinson" className="team-card-img" />
+              <div className="team-card-title">Sandra Robinson</div>
               <div className="team-card-role">Payroll Associate I</div>
               <div className="team-card-bio">
                 {[
-                  "Heidi has been with the company since the end of 2025.",
-                  "She loves working at Lamm & Company because of the detail-oriented work and responsibility, as well as the people she gets to work with daily.",
-                  "A fun fact about Heidi is that she enjoys lifting weights at the gym."
+                  "Sandra is a valued member of the Payroll Team and is excited to support the firm.",
+                  "Bio coming soon."
                 ].map((para, i) => (
                   <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
                 ))}
@@ -301,7 +329,7 @@ function About() {
             <div className="team-card slow-fade-up delay-2">
               <img src="/Sharon-Pic.webp" alt="Sharon King" className="team-card-img" />
               <div className="team-card-title">Sharon King</div>
-              <div className="team-card-role">Admin Associate II</div>
+              <div className="team-card-role">Senior Administrative Associate</div>
               <div className="team-card-bio">
                 {[
                   "Sharon has been with the company since September 2024.",
@@ -352,6 +380,34 @@ function About() {
                   "Natalee started with Lamm & Company in February of 2026.",
                   "Her favorite thing about working here is getting to help clients feel taken care of and making the process easier for them.",
                   "Fun fact: Natalee has a serious love for cozy nights and a good movie or book."
+                ].map((para, i) => (
+                  <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
+                ))}
+              </div>
+            </div>
+            {/* Sabine Pierce */}
+            <div className="team-card slow-fade-up delay-6">
+              <img src="/NoPic-Pic.webp" alt="Sabine Pierce" className="team-card-img" />
+              <div className="team-card-title">Sabine Pierce</div>
+              <div className="team-card-role">Admin Associate</div>
+              <div className="team-card-bio">
+                {[
+                  "Sabine is a new addition to the Admin Team and is excited to support the firm.",
+                  "Bio coming soon."
+                ].map((para, i) => (
+                  <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
+                ))}
+              </div>
+            </div>
+            {/* Ginny Fernandez */}
+            <div className="team-card slow-fade-up delay-7">
+              <img src="/NoPic-Pic.webp" alt="Ginny Fernandez" className="team-card-img" />
+              <div className="team-card-title">Ginny Fernandez</div>
+              <div className="team-card-role">Admin Associate</div>
+              <div className="team-card-bio">
+                {[
+                  "Ginny joins the Admin Team and is excited to support the firm.",
+                  "Bio coming soon."
                 ].map((para, i) => (
                   <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
                 ))}

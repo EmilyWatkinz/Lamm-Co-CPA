@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './App.css';
 import SiteNavbar from './components/SiteNavbar';
 
@@ -8,6 +9,7 @@ function EmployeePortal() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState('');
   const [timeOffType, setTimeOffType] = useState('Vacation');
+  const [hoursRequested, setHoursRequested] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [reason, setReason] = useState('');
@@ -37,8 +39,8 @@ function EmployeePortal() {
   const handleTimeOffSubmit = async (event) => {
     event.preventDefault();
 
-    if (!startDate || !endDate || !reason.trim()) {
-      setTimeOffStatus('Please complete the start date, end date, and reason before submitting.');
+    if (!startDate || !endDate || !hoursRequested || !reason.trim()) {
+      setTimeOffStatus('Please complete the hours requested, start date, end date, and reason before submitting.');
       return;
     }
 
@@ -51,6 +53,7 @@ function EmployeePortal() {
         body: JSON.stringify({
           employeeEmail,
           timeOffType,
+          hoursRequested,
           startDate,
           endDate,
           reason,
@@ -65,6 +68,7 @@ function EmployeePortal() {
 
       setTimeOffStatus(payload.message || 'Time off request sent successfully.');
       setReason('');
+      setHoursRequested('');
       setStartDate('');
       setEndDate('');
     } catch (error) {
@@ -83,7 +87,7 @@ function EmployeePortal() {
         </section>
 
         <section className="employee-portal-grid">
-          <div className="employee-portal-card employee-login-card">
+          <div className="employee-portal-card employee-login-card slow-fade-up delay-0">
             <h2>Employee Login</h2>
             <form onSubmit={handleLogin} className="employee-login-form">
               <label className="employee-field">
@@ -114,11 +118,11 @@ function EmployeePortal() {
             </form>
           </div>
 
-          <div className="employee-portal-card employment-card">
+          <div className="employee-portal-card employment-card slow-fade-up delay-1">
             <h2>Join Our Team</h2>
             <p>We are always looking for talented professionals who want to grow with our firm.</p>
             <a
-              href="mailto:careers@lammcocpa.com?subject=Employment%20Application"
+              href="mailto:lcolligan@lammcocpa.com?subject=Employment%20Application&body=Hello%20Lamm%20%26%20Company%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20an%20open%20position.%20Please%20let%20me%20know%20what%20opportunities%20are%20available.%0D%0A%0D%0AThank%20you%2C%0D%0A"
               className="employee-hiring-link"
             >
               We&apos;re Hiring
@@ -144,10 +148,24 @@ function EmployeePortal() {
 
                   <div className="employee-date-row">
                     <label className="employee-field">
+                      <span>Hours requested</span>
+                      <input
+                        type="number"
+                        min="1"
+                        step="0.5"
+                        value={hoursRequested}
+                        onChange={(event) => setHoursRequested(event.target.value)}
+                        placeholder="e.g. 8"
+                      />
+                    </label>
+
+                    <label className="employee-field">
                       <span>Start date</span>
                       <input type="date" value={startDate} onChange={(event) => setStartDate(event.target.value)} />
                     </label>
+                  </div>
 
+                  <div className="employee-date-row">
                     <label className="employee-field">
                       <span>End date</span>
                       <input type="date" value={endDate} onChange={(event) => setEndDate(event.target.value)} />
@@ -166,6 +184,9 @@ function EmployeePortal() {
 
                   <button type="submit" className="employee-portal-btn employee-portal-btn-alt">Request Time Off</button>
                 </form>
+                <Link to="/resources/documents" className="employee-portal-btn employee-portal-btn-alt employee-portal-docs-link">
+                  View Employee Documents
+                </Link>
                 {timeOffStatus && <p className="employee-login-error">{timeOffStatus}</p>}
               </div>
 

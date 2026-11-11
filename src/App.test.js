@@ -48,6 +48,7 @@ test('requires employee login before showing time off and announcements', () => 
   expect(screen.getByRole('heading', { name: /employee portal/i })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: /log in/i })).toBeInTheDocument();
   expect(screen.queryByRole('button', { name: /request time off/i })).not.toBeInTheDocument();
+  expect(screen.queryByRole('link', { name: /view employee documents/i })).not.toBeInTheDocument();
   expect(screen.queryByText(/employee updates & announcements/i)).not.toBeInTheDocument();
 
   fireEvent.change(screen.getByLabelText(/employee email/i), { target: { value: 'ewatkins@lammcocpa.com' } });
@@ -55,6 +56,7 @@ test('requires employee login before showing time off and announcements', () => 
   fireEvent.click(screen.getByRole('button', { name: /log in/i }));
 
   expect(screen.getByRole('button', { name: /request time off/i })).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: /view employee documents/i })).toBeInTheDocument();
   expect(screen.getByText(/employee updates & announcements/i)).toBeInTheDocument();
 });
 
@@ -76,6 +78,7 @@ test('sends time off requests to the internal recipient through the backend API'
   fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'secure-password' } });
   fireEvent.click(screen.getByRole('button', { name: /log in/i }));
 
+  fireEvent.change(screen.getByLabelText(/hours requested/i), { target: { value: '16' } });
   fireEvent.change(screen.getByLabelText(/start date/i), { target: { value: '2026-12-10' } });
   fireEvent.change(screen.getByLabelText(/end date/i), { target: { value: '2026-12-12' } });
   fireEvent.change(screen.getByLabelText(/reason/i), { target: { value: 'Family vacation' } });

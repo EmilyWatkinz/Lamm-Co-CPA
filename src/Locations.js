@@ -38,7 +38,7 @@ function Locations() {
                 style={{ animationDelay: '180ms' }}
               >
                 We are proud to call Idaho home and deeply value the local families, business owners,
-                and communities we serve every day through our six Idaho locations. At the same time,
+                and communities we serve every day through our seven Idaho locations. At the same time,
                 our team is fully equipped to serve clients across the U.S.A. and around the world with
                 the same responsive guidance, trusted expertise, and personal care.
               </p>
@@ -87,6 +87,12 @@ function Locations() {
               <div className="location-card-title">Kuna</div>
               <div className="location-card-line"><strong>Call Us:</strong> (208) 510-6326</div>
               <div className="location-card-line"><strong>Visit Us:</strong> 1579 N. Linder Road, Kuna, ID 83634</div>
+              <div className="location-card-line"><strong>Hours:</strong> M-Th 8am - 4pm</div>
+            </a>
+            <a href="https://www.google.com/search?q=Lamm+%26+Company+Boise+location&client=ms-android-att-us-rvc3&sca_esv=c70b30f9636752de&sxsrf=AKL5yDh5j84DPuhRy2mHhmB-ahtLZQsjsg%3A1794422553451&ei=Gbf0asKGG_yt0PEP4e_GoQM&biw=1536&bih=791&uact=5&oq=Lamm+%26+Company+Boise+location&gs_lp=Egxnd3Mtd2l6LXNlcnAiHUxhbW0gJiBDb21wYW55IEJvaXNlIGxvY2F0aW9uMgUQIRigATIFECEYoAEyBRAhGKABSOMkULgHWNQjcAF4AZABAJgBeaABuxWqAQQyMC45uAEDyAEA-AEBmAIeoAKgFqgCEMICBxAjGOoCGCfCAhAQIxjwBRieBhiiBxjqAhgnwgINEC4YxwEYrwEY6gIYJ8ICFxAAGIAEGIoFGJECGOcGGOoCGLQC2AEBwgIXEC4YgAQYigUYkQIY5wYY6gIYtALYAQHCAgQQIxgnwgIEEC4YJ8ICDhAAGIAEGIoFGJECGLQHwgILEAAYgAQYigUYkQLCAgsQLhiABBiKBRiRAsICCxAuGIAEGLEDGIMBwgIKEC4YgAQYigUYQ8ICDhAAGIAEGIoFGJECGLEDwgINEC4YgAQYigUYQxixA8ICExAuGIAEGIoFGEMYsQMYxwEY0QPCAhEQLhiABBiKBRiRAhjHARivAcICBRAAGIAEwgILEC4YgAQYxwEYrwHCAgUQLhiABMICCBAAGIAEGLQHwgIGEAAYFhgewgIIEAAYFhgeGArCAggQABiJBRiiBMICCBAAGIAEGKIEwgIFEAAY7wXCAgUQIRirApgDCvEF4-MGXiNF9HW6BgYIARABGAGSBwUxOS4xMaAH1usBsgcFMTguMTG4B5UWwgcGNi4yMS4zyAc-gAgB&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer" className={`location-card locations-fade-item${animateIn ? ' locations-fade-visible' : ''}`} style={{ animationDelay: '960ms' }}>
+              <div className="location-card-title">Boise</div>
+              <div className="location-card-line"><strong>Call Us:</strong> (208) 345-5383</div>
+              <div className="location-card-line"><strong>Visit Us:</strong> 280 Parkcenter Blvd, Suite 100, Boise, ID 83706</div>
               <div className="location-card-line"><strong>Hours:</strong> M-Th 8am - 4pm</div>
             </a>
           </div>

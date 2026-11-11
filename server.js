@@ -215,12 +215,13 @@ app.post('/api/employee-timeoff', express.json(), async (request, response) => {
     const {
       employeeEmail = '',
       timeOffType = '',
+      hoursRequested = '',
       startDate = '',
       endDate = '',
       reason = '',
     } = request.body || {};
 
-    if (!employeeEmail || !timeOffType || !startDate || !endDate || !reason) {
+    if (!employeeEmail || !timeOffType || !hoursRequested || !startDate || !endDate || !reason) {
       return response.status(400).json({ message: 'Please complete all time off request fields.' });
     }
 
@@ -229,6 +230,7 @@ app.post('/api/employee-timeoff', express.json(), async (request, response) => {
       'A new time off request has been submitted.',
       `Employee email: ${employeeEmail}`,
       `Time off type: ${timeOffType}`,
+      `Hours requested: ${hoursRequested}`,
       `Start date: ${startDate}`,
       `End date: ${endDate}`,
       `Reason: ${reason}`,

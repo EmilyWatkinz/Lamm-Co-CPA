@@ -68,7 +68,8 @@ function App() {
                 <p className="announcements-kicker">What&apos;s New</p>
                 <h2>Announcements</h2>
                 <ul className="announcements-list">
-                  <li>Get ready for the upcoming tax season starting in January. If you would like to get in touch with us, <a href="https://forms.gle/your-intake-form-link" target="_blank" rel="noopener noreferrer">request an intake form here</a>.</li>
+                  <li>Get ready for the upcoming tax season starting in January.</li>
+                  <li>We are excited to announce the opening of our new Boise location, expanding access to local support and services.</li>
                   <li>Secure Document Upload is available 24/7 for current clients.</li>
                   <li>Need help quickly? Email us at <a href="mailto:info@lammcocpa.com">info@lammcocpa.com</a>.</li>
                 </ul>
@@ -114,6 +115,14 @@ function App() {
               className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}
             >
               McCall
+            </a>
+            <a
+              href="https://www.google.com/search?q=Lamm+%26+Company+Boise+location&client=ms-android-att-us-rvc3&sca_esv=c70b30f9636752de&sxsrf=AKL5yDh5j84DPuhRy2mHhmB-ahtLZQsjsg%3A1794422553451&ei=Gbf0asKGG_yt0PEP4e_GoQM&biw=1536&bih=791&uact=5&oq=Lamm+%26+Company+Boise+location&gs_lp=Egxnd3Mtd2l6LXNlcnAiHUxhbW0gJiBDb21wYW55IEJvaXNlIGxvY2F0aW9uMgUQIRigATIFECEYoAEyBRAhGKABSOMkULgHWNQjcAF4AZABAJgBeaABuxWqAQQyMC45uAEDyAEA-AEBmAIeoAKgFqgCEMICBxAjGOoCGCfCAhAQIxjwBRieBhiiBxjqAhgnwgINEC4YxwEYrwEY6gIYJ8ICFxAAGIAEGIoFGJECGOcGGOoCGLQC2AEBwgIXEC4YgAQYigUYkQIY5wYY6gIYtALYAQHCAgQQIxgnwgIEEC4YJ8ICDhAAGIAEGIoFGJECGLQHwgILEAAYgAQYigUYkQLCAgsQLhiABBiKBRiRAsICCxAuGIAEGLEDGIMBwgIKEC4YgAQYigUYQ8ICDhAAGIAEGIoFGJECGLEDwgINEC4YgAQYigUYQxixA8ICExAuGIAEGIoFGEMYsQMYxwEY0QPCAhEQLhiABBiKBRiRAhjHARivAcICBRAAGIAEwgILEC4YgAQYxwEYrwHCAgUQLhiABMICCBAAGIAEGLQHwgIGEAAYFhgewgIIEAAYFhgeGArCAggQABiJBRiiBMICCBAAGIAEGKIEwgIFEAAY7wXCAgUQIRirApgDCvEF4-MGXiNF9HW6BgYIARABGAGSBwUxOS4xMaAH1usBsgcFMTguMTG4B5UWwgcGNi4yMS4zyAc-gAgB&sclient=gws-wiz-serp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}
+            >
+              Boise
             </a>
             <a
               href="https://share.google/YvDbl3CTSWZlQ9vcX"
