@@ -688,8 +688,7 @@ html, body {
 .employment-card-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.85rem;
+  gap: 1rem;
 }
 
 .employment-copy {
@@ -697,20 +696,28 @@ html, body {
 }
 
 .employment-copy p {
-  margin: 0 0 0.75rem;
+  margin: 0;
   line-height: 1.7;
   color: #3a2b2f;
 }
 
+.employment-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+}
+
 .employment-team-image {
-  width: 220px;
-  height: 165px;
+  width: 190px;
+  height: 140px;
   object-fit: cover;
   border-radius: 0.9rem;
   border: 1px solid rgba(144,12,63,0.12);
   box-shadow: 0 12px 24px rgba(77, 26, 40, 0.12);
-  margin-left: auto;
-  margin-top: 0.25rem;
+  flex-shrink: 0;
+  margin-left: 6.5rem;
 }
 
 .employee-hiring-link {
