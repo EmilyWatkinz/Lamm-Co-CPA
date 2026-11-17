@@ -192,7 +192,7 @@ function EmployeePortal() {
             </section>
 
             <section className="employee-portal-grid employee-portal-authenticated-grid">
-              <div className="employee-portal-card employee-timeoff-card">
+              <div className="employee-portal-card employee-timeoff-card slow-fade-up delay-0">
                 <h2>Request Time Off</h2>
                 <form onSubmit={handleTimeOffSubmit} className="employee-timeoff-form">
                   <label className="employee-field">
@@ -246,7 +246,7 @@ function EmployeePortal() {
                 {timeOffStatus && <p className="employee-login-error">{timeOffStatus}</p>}
               </div>
 
-              <div className="employee-portal-card employee-announcements-card">
+              <div className="employee-portal-card employee-announcements-card slow-fade-up delay-1">
                 <h2>Employee Updates &amp; Announcements</h2>
                 <ul className="employee-announcement-list">
                   <li>Tax season readiness begins in January. Please confirm your availability for busy-season support.</li>

@@ -60,6 +60,8 @@ test('requires employee login before showing time off and announcements', () => 
   expect(screen.getByRole('link', { name: /open employee documents/i })).toBeInTheDocument();
   expect(screen.getByText(/employee updates & announcements/i)).toBeInTheDocument();
   expect(screen.getByRole('button', { name: /log out/i })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /request time off/i }).closest('.employee-portal-card')).toHaveClass('slow-fade-up');
+  expect(screen.getByRole('heading', { name: /employee updates & announcements/i }).closest('.employee-portal-card')).toHaveClass('slow-fade-up');
 
   fireEvent.click(screen.getByRole('button', { name: /log out/i }));
   expect(screen.getByRole('button', { name: /log in/i })).toBeInTheDocument();
