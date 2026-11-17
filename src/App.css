@@ -1856,12 +1856,13 @@ html, body {
 .footer a {
   color: #E6C200;
   font-weight: 600;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .footer a:hover,
 .footer a:focus {
   color: #f7e9b0;
+  text-decoration: none;
 }
 
 .social-link {
@@ -2434,7 +2435,7 @@ html, body {
 .resource-card:hover,
 .resource-card:focus-within {
   background: #f7efe0;
-  box-shadow: 0 8px 20px rgba(74, 13, 35, 0.14);
+  box-shadow: 0  8px 20px rgba(74, 13, 35, 0.14);
 }
 
 .resource-card h2 {
@@ -3550,4 +3551,26 @@ html, body {
 .secure-upload-page .footer {
   flex: 0 0 auto;
   margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    position: relative;
+    padding: 1.35rem 1rem 3.6rem;
+  }
+
+  .footer .social-link {
+    position: absolute;
+    bottom: 0.75rem;
+    margin: 0;
+    padding: 0.2rem;
+  }
+
+  .footer .social-link:nth-of-type(1) {
+    left: calc(50% - 38px);
+  }
+
+  .footer .social-link:nth-of-type(2) {
+    left: calc(50% + 8px);
+  }
 }
