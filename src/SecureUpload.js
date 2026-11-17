@@ -14,16 +14,12 @@ function SecureUpload() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <div className="resources-page classy-about-bg">
+    <div className="resources-page secure-upload-page classy-about-bg">
       <SiteNavbar blogTo="/blog" />
 
       <main className="blog-page-wrap">
         <section className="blog-page-hero">
           <h1>Secure Document Upload</h1>
-          <p>
-            Choose files from your computer and send them directly to our office inbox.
-            Your documents are transmitted through a secure server process and emailed to our team.
-          </p>
           <p className="coming-soon-message">
             This feature is coming soon. Stay tuned for updates!
           </p>
