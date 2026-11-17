@@ -14,7 +14,7 @@ function EmployeePortal() {
       return false;
     }
 
-    return localStorage.getItem('employeePortalLoggedIn') === 'true';
+    return sessionStorage.getItem('employeePortalLoggedIn') === 'true';
   });
   const [loginError, setLoginError] = useState('');
   const [timeOffType, setTimeOffType] = useState('Vacation');
@@ -27,7 +27,7 @@ function EmployeePortal() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('employeePortalLoggedIn', String(isLoggedIn));
+      sessionStorage.setItem('employeePortalLoggedIn', String(isLoggedIn));
     }
 
     if (isLoggedIn) {
