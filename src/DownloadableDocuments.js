@@ -22,7 +22,7 @@ function DownloadableDocuments() {
         <section className="resources-hero documents-hero">
           <div className="resources-hero-main">
             <h1>Downloadable Documents</h1>
-            <p>documents coming soon</p>
+            <p>Documents coming soon</p>
           </div>
           <Link to="/resources" className="resources-deadlines-btn">
             BACK TO RESOURCES
