@@ -23,11 +23,20 @@ function EmployeePortal() {
   const [endDate, setEndDate] = useState('');
   const [reason, setReason] = useState('');
   const [timeOffStatus, setTimeOffStatus] = useState('');
+  const [showPortalContent, setShowPortalContent] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('employeePortalLoggedIn', String(isLoggedIn));
     }
+
+    if (isLoggedIn) {
+      setShowPortalContent(false);
+      const timer = window.setTimeout(() => setShowPortalContent(true), 180);
+      return () => window.clearTimeout(timer);
+    }
+
+    setShowPortalContent(false);
   }, [isLoggedIn]);
 
   const handleLogin = (event) => {
@@ -42,7 +51,7 @@ function EmployeePortal() {
 
     const companyEmailPattern = /^[A-Za-z0-9._%+-]+@lammcocpa\.com$/i;
     if (!companyEmailPattern.test(trimmedEmail)) {
-      setLoginError('Use your employee email address ending in @lammcocpa.com.');
+      setLoginError('Please use your employee email address.');
       return;
     }
 
@@ -82,6 +91,20 @@ function EmployeePortal() {
       return;
     }
 
+    const formatMailDate = (dateValue) => {
+      if (!dateValue) {
+        return '';
+      }
+
+      const [year, month, day] = dateValue.split('-');
+      const date = new Date(Number(year), Number(month) - 1, Number(day));
+      return date.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      });
+    };
+
     const subject = encodeURIComponent(`Time Off Request - ${timeOffType}`);
     const body = encodeURIComponent(
       [
@@ -90,15 +113,15 @@ function EmployeePortal() {
         `Employee email: ${employeeEmail || 'Not provided'}`,
         `Type: ${timeOffType}`,
         `Hours requested: ${hoursRequested}`,
-        `Start date: ${startDate}`,
-        `End date: ${endDate}`,
+        `Start date: ${formatMailDate(startDate)}`,
+        `End date: ${formatMailDate(endDate)}`,
         `Reason: ${reason}`,
       ].join('\n')
     );
 
     window.location.href = `mailto:?to=${TIME_OFF_RECIPIENT}&subject=${subject}&body=${body}`;
 
-    setTimeOffStatus('Your email app has opened with the time-off request details. Please send it from your email account.');
+    setTimeOffStatus('Email app has been opened. Time off request will be sent from there.');
     setReason('');
     setHoursRequested('');
     setStartDate('');
@@ -183,7 +206,9 @@ function EmployeePortal() {
 
         {isLoggedIn && (
           <>
-            <section className="employee-portal-authenticated-toolbar">
+            {!showPortalContent && <div className="employee-portal-loading" aria-live="polite">Loading employee portal...</div>}
+
+            <section className={`employee-portal-authenticated-toolbar ${showPortalContent ? 'portal-content-visible' : 'portal-content-hidden'}`}>
               <div className="employee-docs-box">
                 <span className="employee-docs-title">Employee Documents</span>
                 <Link to="/resources/documents" className="employee-docs-link">
@@ -192,7 +217,7 @@ function EmployeePortal() {
               </div>
             </section>
 
-            <section className="employee-portal-grid employee-portal-authenticated-grid">
+            <section className={`employee-portal-grid employee-portal-authenticated-grid ${showPortalContent ? 'portal-content-visible' : 'portal-content-hidden'}`}>
               <div className="employee-portal-card employee-timeoff-card slow-fade-up delay-0">
                 <h2>Request Time Off</h2>
                 <form onSubmit={handleTimeOffSubmit} className="employee-timeoff-form">
@@ -257,7 +282,7 @@ function EmployeePortal() {
               </div>
             </section>
 
-            <div className="employee-portal-footer-actions">
+            <div className={`employee-portal-footer-actions ${showPortalContent ? 'portal-content-visible' : 'portal-content-hidden'}`}>
               <button type="button" className="employee-portal-btn employee-portal-btn-alt" onClick={handleLogout}>
                 Log Out
               </button>
