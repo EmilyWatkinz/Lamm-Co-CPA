@@ -104,12 +104,7 @@ test('allows employees to show or hide the password while logging in', () => {
   expect(passwordInput).toHaveAttribute('type', 'password');
 });
 
-test('sends time off requests to the internal recipient through the backend API', async () => {
-  const fetchMock = jest.spyOn(global, 'fetch').mockResolvedValue({
-    ok: true,
-    json: async () => ({ message: 'Time off request sent.' }),
-  });
-
+test('opens the default email app with the time off request details', async () => {
   render(
     <MemoryRouter initialEntries={['/employee-portal']}>
       <Routes>
@@ -129,12 +124,10 @@ test('sends time off requests to the internal recipient through the backend API'
   fireEvent.click(screen.getByRole('button', { name: /request time off/i }));
 
   await waitFor(() => {
-    expect(fetchMock).toHaveBeenCalled();
-    expect(fetchMock.mock.calls[0][0]).toContain('/api/employee-timeoff');
-    expect(fetchMock.mock.calls[0][1]).toEqual(expect.objectContaining({ method: 'POST' }));
+    expect(window.location.href).toContain('mailto:');
+    expect(window.location.href).toContain('lcolligan@lammcocpa.com');
+    expect(window.location.href).toContain('Family%20vacation');
   });
-
-  fetchMock.mockRestore();
 });
 
 test('filters out Jane Doe and Sarah Smith reviews', async () => {

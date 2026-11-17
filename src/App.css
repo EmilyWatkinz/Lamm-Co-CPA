@@ -779,6 +779,12 @@ html, body {
   margin: 2.5rem 0 1.5rem;
 }
 
+.employee-portal-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
 .employee-docs-box {
   display: flex;
   align-items: center;

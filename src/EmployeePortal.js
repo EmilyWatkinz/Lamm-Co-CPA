@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
 import SiteNavbar from './components/SiteNavbar';
+
+const TIME_OFF_RECIPIENT = 'lcolligan@lammcocpa.com';
 
 function EmployeePortal() {
   const [employeeEmail, setEmployeeEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
+    return localStorage.getItem('employeePortalLoggedIn') === 'true';
+  });
   const [loginError, setLoginError] = useState('');
   const [timeOffType, setTimeOffType] = useState('Vacation');
   const [hoursRequested, setHoursRequested] = useState('');
@@ -15,6 +23,12 @@ function EmployeePortal() {
   const [endDate, setEndDate] = useState('');
   const [reason, setReason] = useState('');
   const [timeOffStatus, setTimeOffStatus] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('employeePortalLoggedIn', String(isLoggedIn));
+    }
+  }, [isLoggedIn]);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -60,7 +74,7 @@ function EmployeePortal() {
     setLoginError('');
   };
 
-  const handleTimeOffSubmit = async (event) => {
+  const handleTimeOffSubmit = (event) => {
     event.preventDefault();
 
     if (!startDate || !endDate || !hoursRequested || !reason.trim()) {
@@ -68,36 +82,27 @@ function EmployeePortal() {
       return;
     }
 
-    try {
-      const response = await fetch('/api/employee-timeoff', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          employeeEmail,
-          timeOffType,
-          hoursRequested,
-          startDate,
-          endDate,
-          reason,
-        }),
-      });
+    const subject = encodeURIComponent(`Time Off Request - ${timeOffType}`);
+    const body = encodeURIComponent(
+      [
+        'Time off request',
+        '',
+        `Employee email: ${employeeEmail || 'Not provided'}`,
+        `Type: ${timeOffType}`,
+        `Hours requested: ${hoursRequested}`,
+        `Start date: ${startDate}`,
+        `End date: ${endDate}`,
+        `Reason: ${reason}`,
+      ].join('\n')
+    );
 
-      const payload = await response.json().catch(() => ({ message: 'Time off request sent.' }));
+    window.location.href = `mailto:?to=${TIME_OFF_RECIPIENT}&subject=${subject}&body=${body}`;
 
-      if (!response.ok) {
-        throw new Error(payload.message || 'Unable to submit time off request.');
-      }
-
-      setTimeOffStatus(payload.message || 'Time off request sent successfully.');
-      setReason('');
-      setHoursRequested('');
-      setStartDate('');
-      setEndDate('');
-    } catch (error) {
-      setTimeOffStatus(error.message || 'Unable to submit time off request.');
-    }
+    setTimeOffStatus('Your email app has opened with the time-off request details. Please send it from your email account.');
+    setReason('');
+    setHoursRequested('');
+    setStartDate('');
+    setEndDate('');
   };
 
   return (
@@ -185,10 +190,6 @@ function EmployeePortal() {
                   Open Employee Documents
                 </Link>
               </div>
-
-              <button type="button" className="employee-portal-btn employee-portal-btn-alt" onClick={handleLogout}>
-                Log Out
-              </button>
             </section>
 
             <section className="employee-portal-grid employee-portal-authenticated-grid">
@@ -255,6 +256,12 @@ function EmployeePortal() {
                 </ul>
               </div>
             </section>
+
+            <div className="employee-portal-footer-actions">
+              <button type="button" className="employee-portal-btn employee-portal-btn-alt" onClick={handleLogout}>
+                Log Out
+              </button>
+            </div>
           </>
         )}
       </main>
