@@ -281,11 +281,12 @@ function About() {
             <div className="team-card slow-fade-up delay-2">
               <img src="/NoPic-Pic.webp" alt="Sandra Robinson" className="team-card-img" />
               <div className="team-card-title">Sandra Robinson</div>
-              <div className="team-card-role">Payroll Associate I</div>
+              <div className="team-card-role">Payroll Associate 1</div>
               <div className="team-card-bio">
                 {[
-                  "Sandra is a valued member of the Payroll Team and is excited to support the firm.",
-                  "Bio coming soon."
+                  "Sandra has done payroll on and off for the last 20+ years, bringing a wealth of experience and steady support to the Payroll Team.",
+                  "What she likes most about working at Lamm & Company is the laid-back atmosphere and the friendly environment that makes the workday enjoyable.",
+                  "A fun fact about Sandra is that she is very new to Idaho and has spent the last 25+ years in south/central Montana."
                 ].map((para, i) => (
                   <p key={i} style={{ margin: i === 0 ? 0 : '1em 0 0 0' }}>{para}</p>
                 ))}
