@@ -174,12 +174,7 @@ test('creates a payment link request email for ar@lammcocpa.com', () => {
   expect(window.location.href).toContain('Jane%20Smith');
 });
 
-test('sends secure uploads to the backend email API instead of Firebase', async () => {
-  const fetchMock = jest.spyOn(global, 'fetch').mockResolvedValue({
-    ok: true,
-    json: async () => ({ message: 'Documents emailed to ar@lammcocpa.com.' }),
-  });
-
+test('opens the email app for secure document uploads', async () => {
   render(
     <MemoryRouter>
       <SecureUpload />
@@ -194,10 +189,10 @@ test('sends secure uploads to the backend email API instead of Firebase', async 
   fireEvent.click(screen.getByRole('button', { name: /send documents/i }));
 
   await waitFor(() => {
-    expect(fetchMock).toHaveBeenCalled();
-    expect(fetchMock.mock.calls[0][0]).toContain('/api/secure-upload');
-    expect(fetchMock.mock.calls[0][1]).toEqual(expect.objectContaining({ method: 'POST' }));
+    expect(screen.getByText(/email app has been opened/i)).toBeInTheDocument();
   });
 
-  fetchMock.mockRestore();
+  expect(window.location.href).toContain('mailto:ar@lammcocpa.com');
+  expect(window.location.href).toContain('Jane%20Smith');
+  expect(window.location.href).toContain('test.pdf');
 });

@@ -42,36 +42,30 @@ function SecureUpload() {
     setStatusMessage('');
 
     try {
-      const formData = new FormData();
-      selectedFiles.forEach((file) => {
-        formData.append('files', file);
-      });
+      const subject = `Secure document upload${clientName ? ` from ${clientName}` : ''}`;
+      const fileList = selectedFiles.map((file) => `- ${file.name}`).join('\n');
+      const body = [
+        'Hello Lamm & Company,',
+        '',
+        'I would like to securely send the following documents.',
+        clientName ? `Name: ${clientName}` : null,
+        clientEmail ? `Email: ${clientEmail}` : null,
+        notes ? `Notes: ${notes}` : null,
+        '',
+        'Documents:',
+        fileList,
+        '',
+        'Please attach the selected documents to this email before sending.',
+      ].filter(Boolean).join('\n');
 
-      if (clientName) formData.append('clientName', clientName);
-      if (clientEmail) formData.append('clientEmail', clientEmail);
-      if (notes) formData.append('notes', notes);
-
-      const response = await fetch(uploadEndpoint, {
-        method: 'POST',
-        body: formData,
-      });
-
-      const payload = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        throw new Error(payload.message || `Upload failed with status ${response.status}`);
-      }
+      window.location.href = `mailto:ar@lammcocpa.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
       setStatusType('success');
-      setStatusMessage(payload.message || 'Upload received and queued for delivery.');
+      setStatusMessage('Your email app has been opened. Please attach the selected documents and send the email.');
       setUploadComplete(true);
-      setSelectedFiles([]);
-      setClientName('');
-      setClientEmail('');
-      setNotes('');
     } catch (error) {
       setStatusType('error');
-      setStatusMessage(error.message || 'We could not send the documents by email. Please try again.');
+      setStatusMessage(error.message || 'We could not open your email app. Please try again.');
     } finally {
       setIsUploading(false);
     }
