@@ -187,18 +187,18 @@ function EmployeePortal() {
               </div>
 
               <div className="employment-actions">
+                <img
+                  src="/successful-happy-business-team_53876-74892.avif"
+                  alt="Happy team smiling in the office"
+                  className="employment-team-image"
+                />
+
                 <a
                   href="mailto:lcolligan@lammcocpa.com?subject=Employment%20Application&body=Hello%20Lamm%20%26%20Company%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20an%20open%20position.%20Please%20let%20me%20know%20what%20opportunities%20are%20available.%0D%0A%0D%0AThank%20you%2C%0D%0A"
                   className="employee-hiring-link"
                 >
                   We&apos;re Hiring
                 </a>
-
-                <img
-                  src="/successful-happy-business-team_53876-74892.avif"
-                  alt="Happy team smiling in the office"
-                  className="employment-team-image"
-                />
               </div>
             </div>
           </div>
