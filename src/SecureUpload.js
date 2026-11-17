@@ -12,6 +12,9 @@ function SecureUpload() {
   const [uploadComplete, setUploadComplete] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [statusType, setStatusType] = useState('info');
+  const uploadEndpoint = process.env.REACT_APP_UPLOAD_API_URL || (window.location.port === '3000'
+    ? 'http://localhost:5001/api/secure-upload'
+    : '/api/secure-upload');
 
   useEffect(() => {
     const handleScroll = () => setShowScroll(window.scrollY > 200);
@@ -39,30 +42,36 @@ function SecureUpload() {
     setStatusMessage('');
 
     try {
-      const subject = `Secure document upload${clientName ? ` from ${clientName}` : ''}`;
-      const fileList = selectedFiles.map((file) => `- ${file.name}`).join('\n');
-      const body = [
-        'Hello Lamm & Company,',
-        '',
-        'I would like to securely send the following documents.',
-        clientName ? `Name: ${clientName}` : null,
-        clientEmail ? `Email: ${clientEmail}` : null,
-        notes ? `Notes: ${notes}` : null,
-        '',
-        'Documents:',
-        fileList,
-        '',
-        'Please attach the selected documents to this email before sending.',
-      ].filter(Boolean).join('\n');
+      const formData = new FormData();
+      selectedFiles.forEach((file) => {
+        formData.append('files', file);
+      });
 
-      window.location.href = `mailto:ar@lammcocpa.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (clientName) formData.append('clientName', clientName);
+      if (clientEmail) formData.append('clientEmail', clientEmail);
+      if (notes) formData.append('notes', notes);
+
+      const response = await fetch(uploadEndpoint, {
+        method: 'POST',
+        body: formData,
+      });
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(payload.message || `Upload failed with status ${response.status}`);
+      }
 
       setStatusType('success');
-      setStatusMessage('Your email app has been opened. Please attach the selected documents and send the email.');
+      setStatusMessage(payload.message || 'Upload received and queued for delivery.');
       setUploadComplete(true);
+      setSelectedFiles([]);
+      setClientName('');
+      setClientEmail('');
+      setNotes('');
     } catch (error) {
       setStatusType('error');
-      setStatusMessage(error.message || 'We could not open your email app. Please try again.');
+      setStatusMessage(error.message || 'We could not send the documents by email. Please try again.');
     } finally {
       setIsUploading(false);
     }
@@ -130,7 +139,7 @@ function SecureUpload() {
                 onChange={handleFileChange}
                 accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.heic,.txt,.csv"
               />
-              <small>You can select multiple documents at once. Accepted files include PDF, Word, Excel, images, text, and CSV files.</small>
+              <small>Accepted files include PDF, Word, Excel, images, text, and CSV files.</small>
             </label>
 
             <div className="selected-files" aria-live="polite">

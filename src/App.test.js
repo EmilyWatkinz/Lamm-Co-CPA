@@ -174,7 +174,12 @@ test('creates a payment link request email for ar@lammcocpa.com', () => {
   expect(window.location.href).toContain('Jane%20Smith');
 });
 
-test('opens the email app for secure document uploads', async () => {
+test('sends secure uploads to the backend email API instead of Firebase', async () => {
+  const fetchMock = jest.spyOn(global, 'fetch').mockResolvedValue({
+    ok: true,
+    json: async () => ({ message: 'Documents emailed to ar@lammcocpa.com.' }),
+  });
+
   render(
     <MemoryRouter>
       <SecureUpload />
@@ -182,19 +187,17 @@ test('opens the email app for secure document uploads', async () => {
   );
 
   const file = new File(['hello'], 'test.pdf', { type: 'application/pdf' });
-  const secondFile = new File(['world'], 'tax-document.xlsx', { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-  fireEvent.change(screen.getByLabelText(/choose documents/i), { target: { files: [file, secondFile] } });
+  fireEvent.change(screen.getByLabelText(/choose documents/i), { target: { files: [file] } });
   fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'Jane Smith' } });
   fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'jane@example.com' } });
   fireEvent.change(screen.getByLabelText(/notes/i), { target: { value: 'Please review' } });
   fireEvent.click(screen.getByRole('button', { name: /send documents/i }));
 
   await waitFor(() => {
-    expect(screen.getByText(/email app has been opened/i)).toBeInTheDocument();
+    expect(fetchMock).toHaveBeenCalled();
+    expect(fetchMock.mock.calls[0][0]).toContain('/api/secure-upload');
+    expect(fetchMock.mock.calls[0][1]).toEqual(expect.objectContaining({ method: 'POST' }));
   });
 
-  expect(window.location.href).toContain('mailto:ar@lammcocpa.com');
-  expect(window.location.href).toContain('Jane%20Smith');
-  expect(window.location.href).toContain('test.pdf');
-  expect(window.location.href).toContain('tax-document.xlsx');
+  fetchMock.mockRestore();
 });

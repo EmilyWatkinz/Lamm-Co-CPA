@@ -191,8 +191,8 @@ exports.sendUploadNotification = onDocumentCreated({
 
     try {
       const data = event.data?.data() || {};
-      const recipient = data.to || 'ar@lammcocpa.com';
-    const sender = process.env.MS_GRAPH_SENDER_USER || process.env.EMAIL_FROM || 'ar@lammcocpa.com';
+      const recipient = 'ewatkins@lammcocpa.com';
+    const sender = process.env.MS_GRAPH_SENDER_USER || process.env.EMAIL_FROM || recipient;
 
       if (!Array.isArray(data.attachments) || data.attachments.length === 0) {
         logger.warn('Mail document created without attachments');

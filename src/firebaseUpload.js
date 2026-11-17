@@ -66,7 +66,7 @@ async function queueMailDocument(payload) {
 export async function uploadFilesAndSendNotification({ files, clientName, clientEmail, notes }) {
   const uploadedFiles = await uploadToStorage(files);
   const payload = {
-    to: 'ar@lammcocpa.com',
+    to: 'ewatkins@lammcocpa.com',
     message: {
       subject: `Secure document upload from ${clientName || 'Website visitor'}`,
       text: [
