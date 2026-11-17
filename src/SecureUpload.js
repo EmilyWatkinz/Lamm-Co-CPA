@@ -12,9 +12,6 @@ function SecureUpload() {
   const [uploadComplete, setUploadComplete] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [statusType, setStatusType] = useState('info');
-  const uploadEndpoint = process.env.REACT_APP_UPLOAD_API_URL || (window.location.port === '3000'
-    ? 'http://localhost:5001/api/secure-upload'
-    : '/api/secure-upload');
 
   useEffect(() => {
     const handleScroll = () => setShowScroll(window.scrollY > 200);
