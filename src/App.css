@@ -745,6 +745,51 @@ html, body {
   font-weight: 600;
 }
 
+.employee-portal-authenticated-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+}
+
+.employee-docs-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex: 1;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(144,12,63,0.12);
+  border-radius: 0.9rem;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 10px 24px rgba(74,13,35,0.08);
+}
+
+.employee-docs-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #900C3F;
+}
+
+.employee-docs-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background: #f4e7ba;
+  color: #4d1a28;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.employee-docs-link:hover,
+.employee-docs-link:focus {
+  background: #f8efcf;
+}
+
 .employee-portal-authenticated-grid {
   margin-top: 1.5rem;
 }

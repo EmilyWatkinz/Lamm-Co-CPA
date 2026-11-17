@@ -25,7 +25,7 @@ function EmployeePortal() {
       return;
     }
 
-    const companyEmailPattern = /^[A-Za-z0-9._%+\-]+@lammcocpa\.com$/i;
+    const companyEmailPattern = /^[A-Za-z0-9._%+-]+@lammcocpa\.com$/i;
     if (!companyEmailPattern.test(trimmedEmail)) {
       setLoginError('Use your employee email address ending in @lammcocpa.com.');
       return;
@@ -166,7 +166,14 @@ function EmployeePortal() {
 
         {isLoggedIn && (
           <>
-            <section className="employee-portal-authenticated-actions">
+            <section className="employee-portal-authenticated-toolbar">
+              <div className="employee-docs-box">
+                <span className="employee-docs-title">Employee Documents</span>
+                <Link to="/resources/documents" className="employee-docs-link">
+                  Open Employee Documents
+                </Link>
+              </div>
+
               <button type="button" className="employee-portal-btn employee-portal-btn-alt" onClick={handleLogout}>
                 Log Out
               </button>
@@ -224,9 +231,6 @@ function EmployeePortal() {
 
                   <button type="submit" className="employee-portal-btn employee-portal-btn-alt">Request Time Off</button>
                 </form>
-                <Link to="/resources/documents" className="employee-portal-btn employee-portal-btn-alt employee-portal-docs-link">
-                  View Employee Documents
-                </Link>
                 {timeOffStatus && <p className="employee-login-error">{timeOffStatus}</p>}
               </div>
 

@@ -57,7 +57,7 @@ test('requires employee login before showing time off and announcements', () => 
   fireEvent.click(screen.getByRole('button', { name: /log in/i }));
 
   expect(screen.getByRole('button', { name: /request time off/i })).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: /view employee documents/i })).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: /open employee documents/i })).toBeInTheDocument();
   expect(screen.getByText(/employee updates & announcements/i)).toBeInTheDocument();
   expect(screen.getByRole('button', { name: /log out/i })).toBeInTheDocument();
 
