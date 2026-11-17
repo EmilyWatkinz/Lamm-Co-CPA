@@ -6,6 +6,7 @@ import SiteNavbar from './components/SiteNavbar';
 function EmployeePortal() {
   const [employeeEmail, setEmployeeEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState('');
   const [timeOffType, setTimeOffType] = useState('Vacation');
@@ -33,6 +34,7 @@ function EmployeePortal() {
 
     setLoginError('');
     setIsLoggedIn(true);
+    setShowPassword(false);
     setPassword('');
   };
 
@@ -54,6 +56,7 @@ function EmployeePortal() {
     setIsLoggedIn(false);
     setEmployeeEmail('');
     setPassword('');
+    setShowPassword(false);
     setLoginError('');
   };
 
@@ -122,15 +125,24 @@ function EmployeePortal() {
                 />
               </label>
 
-              <label className="employee-field">
+              <label className="employee-field employee-password-field">
                 <span>Password</span>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  placeholder="Password"
-                  autoComplete="current-password"
-                />
+                <div className="employee-password-wrapper">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    placeholder="Password"
+                    autoComplete="current-password"
+                  />
+                  <button
+                    type="button"
+                    className="employee-password-toggle"
+                    onClick={() => setShowPassword((currentValue) => !currentValue)}
+                  >
+                    {showPassword ? 'Hide' : 'Show'}
+                  </button>
+                </div>
               </label>
 
               {loginError && <p className="employee-login-error">{loginError}</p>}

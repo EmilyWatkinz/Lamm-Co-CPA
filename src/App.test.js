@@ -83,6 +83,25 @@ test('accepts common employee email formats with dots in the local part', () => 
   expect(screen.getByText(/employee updates & announcements/i)).toBeInTheDocument();
 });
 
+test('allows employees to show or hide the password while logging in', () => {
+  render(
+    <MemoryRouter initialEntries={['/employee-portal']}>
+      <Routes>
+        <Route path="/employee-portal" element={<EmployeePortal />} />
+      </Routes>
+    </MemoryRouter>
+  );
+
+  const passwordInput = screen.getByLabelText(/password/i);
+  expect(passwordInput).toHaveAttribute('type', 'password');
+
+  fireEvent.click(screen.getByRole('button', { name: /show/i }));
+  expect(passwordInput).toHaveAttribute('type', 'text');
+
+  fireEvent.click(screen.getByRole('button', { name: /hide/i }));
+  expect(passwordInput).toHaveAttribute('type', 'password');
+});
+
 test('sends time off requests to the internal recipient through the backend API', async () => {
   const fetchMock = jest.spyOn(global, 'fetch').mockResolvedValue({
     ok: true,
