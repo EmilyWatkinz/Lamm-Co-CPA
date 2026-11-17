@@ -2435,7 +2435,7 @@ html, body {
 .resource-card:hover,
 .resource-card:focus-within {
   background: #f7efe0;
-  box-shadow: 0  8px 20px rgba(74, 13, 35, 0.14);
+  box-shadow: 0         8px 20px rgba(74, 13, 35, 0.14);
 }
 
 .resource-card h2 {
@@ -3556,14 +3556,17 @@ html, body {
 @media (max-width: 768px) {
   .footer {
     position: relative;
-    padding: 1.35rem 1rem 3.6rem;
+    padding: 0.45rem 0.5rem 2.15rem;
+    font-size: 0.76rem;
+    line-height: 1.35;
+    white-space: nowrap;
   }
 
   .footer .social-link {
     position: absolute;
-    bottom: 0.75rem;
+    bottom: 0.32rem;
     margin: 0;
-    padding: 0.2rem;
+    padding: 0.1rem;
   }
 
   .footer .social-link:nth-of-type(1) {
