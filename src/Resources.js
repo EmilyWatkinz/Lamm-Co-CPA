@@ -152,7 +152,7 @@ function Resources() {
                 <p className="resource-placeholder-text">
                   Lamm &amp; Company makes paying for services online fast, secure, and effortless. Our streamlined payment experience is designed for convenience, giving you a simple way to handle invoices from anywhere while keeping your information protected. With just a few clicks, you can complete your payment and get back to what matters most, confident that your account is up to date.
                 </p>
-                <a href="/pay-bill" target="_blank" rel="noopener noreferrer" className="blog-cta-link">
+                <a href="/pay-bill" className="blog-cta-link">
                   <strong>Pay your bill now!</strong>
                 </a>
               </div>
@@ -171,7 +171,7 @@ function Resources() {
                 <p className="resource-placeholder-text">
                   At Lamm &amp; Co CPA, our blog is your go to resource for expert insights on taxes, financial planning, and business strategies. We break down complex tax laws, offer money-saving tips, and keep you informed about important financial updates. Whether you&apos;re an individual taxpayer or a business owner, our blog provides valuable guidance to help you make smart financial decisions year-round. Stay ahead of tax season, maximize deductions, and gain peace of mind.
                 </p>
-                <a href="/blog" target="_blank" rel="noopener noreferrer" className="blog-cta-link">
+                <a href="/blog" className="blog-cta-link">
                   <strong>Explore our latest posts today!</strong>
                 </a>
               </div>

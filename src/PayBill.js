@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import SiteNavbar from './components/SiteNavbar';
+import { Link } from 'react-router-dom';
 
 const paymentEmail = 'ar@lammcocpa.com';
 
@@ -59,8 +60,13 @@ function PayBill() {
 
       <main className="blog-page-wrap">
         <section className="blog-page-hero">
-          <h1>Pay Your Bill</h1>
-          <p>Request a secure payment link and our accounts team will follow up with the details you need.</p>
+          <div className="resources-hero-main">
+            <h1>Pay Your Bill</h1>
+            <p>Request a secure payment link and our accounts team will follow up with the details you need.</p>
+          </div>
+          <Link to="/resources" className="resources-deadlines-btn pay-back-resources-btn">
+            BACK TO RESOURCES
+          </Link>
         </section>
 
         <section className="review-form-wrap" aria-label="Payment link request form">
