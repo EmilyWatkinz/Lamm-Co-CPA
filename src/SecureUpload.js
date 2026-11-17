@@ -133,7 +133,7 @@ function SecureUpload() {
                 onChange={handleFileChange}
                 accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.heic,.txt,.csv"
               />
-              <small>Accepted files include PDF, Word, Excel, images, text, and CSV files.</small>
+              <small>You can select multiple documents at once. Accepted files include PDF, Word, Excel, images, text, and CSV files.</small>
             </label>
 
             <div className="selected-files" aria-live="polite">

@@ -182,7 +182,8 @@ test('opens the email app for secure document uploads', async () => {
   );
 
   const file = new File(['hello'], 'test.pdf', { type: 'application/pdf' });
-  fireEvent.change(screen.getByLabelText(/choose documents/i), { target: { files: [file] } });
+  const secondFile = new File(['world'], 'tax-document.xlsx', { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  fireEvent.change(screen.getByLabelText(/choose documents/i), { target: { files: [file, secondFile] } });
   fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'Jane Smith' } });
   fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'jane@example.com' } });
   fireEvent.change(screen.getByLabelText(/notes/i), { target: { value: 'Please review' } });
@@ -195,4 +196,5 @@ test('opens the email app for secure document uploads', async () => {
   expect(window.location.href).toContain('mailto:ar@lammcocpa.com');
   expect(window.location.href).toContain('Jane%20Smith');
   expect(window.location.href).toContain('test.pdf');
+  expect(window.location.href).toContain('tax-document.xlsx');
 });
