@@ -233,11 +233,6 @@ function TaxCalendar() {
 					))}
 				</section>
 
-				<div className="back-to-resources">
-					<Link to="/resources" className="back-to-resources-link">
-						&rarr; Back to Resources
-					</Link>
-				</div>
 			</main>
 
 			<footer className="footer">

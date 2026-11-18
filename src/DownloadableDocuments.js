@@ -15,7 +15,7 @@ function DownloadableDocuments() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <div className="resources-page classy-about-bg">
+    <div className="resources-page downloadable-documents-page classy-about-bg">
       <SiteNavbar />
 
       <main className="resources-wrap documents-page-wrap">
