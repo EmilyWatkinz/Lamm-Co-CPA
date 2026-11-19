@@ -16,7 +16,7 @@ function About() {
 
   useEffect(() => {
     const revealNodes = Array.from(document.querySelectorAll(
-      '.about-content .about-hero-img, .about-content .about-title, .about-content .about-description, .about-content .team-button-group, .about-content .team-cards-container'
+      '.about-content .about-title, .about-content .about-description, .about-content .team-button-group, .about-content .team-cards-container'
     ));
 
     revealNodes.forEach((node) => {
@@ -54,8 +54,8 @@ function About() {
       <SiteNavbar />
       <div className="about-content">
         <img
-          src="/Staff+minus+Barrett-2880w.webp"
-          alt="Lamm & Company Staff"
+          src={`${process.env.PUBLIC_URL}/Placeholder%20Photo.jpg?v=20261119`}
+          alt="Lamm & Company team"
           className="about-hero-img"
         />
         <h2 className="about-title">Meet our Team</h2>
