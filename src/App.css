@@ -2435,7 +2435,7 @@ html, body {
 .resource-card:hover,
 .resource-card:focus-within {
   background: #f7efe0;
-  box-shadow: 0         8px 20px rgba(74, 13, 35, 0.14);
+  box-shadow: 0  8px 20px rgba(74, 13, 35, 0.14);
 }
 
 .resource-card h2 {
@@ -3624,4 +3624,16 @@ html, body {
     width: 100%;
     box-sizing: border-box;
   }
+}
+
+.employee-portal-resources-page,
+.blog-resources-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-portal-resources-page .employee-portal-page,
+.blog-resources-page .blog-page-wrap {
+  flex: 1;
+  width: 100%;
 }

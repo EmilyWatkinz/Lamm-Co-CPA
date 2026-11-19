@@ -129,7 +129,7 @@ function EmployeePortal() {
   };
 
   return (
-    <div className="resources-page classy-about-bg">
+    <div className="resources-page employee-portal-resources-page classy-about-bg">
       <SiteNavbar blogTo="/blog" />
 
       <main className="employee-portal-page">

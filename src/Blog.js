@@ -41,7 +41,7 @@ function Blog() {
   }, []);
 
   return (
-    <div className="resources-page classy-about-bg">
+    <div className="resources-page blog-resources-page classy-about-bg">
       <SiteNavbar blogTo="/blog" />
 
       <main className="blog-page-wrap">
