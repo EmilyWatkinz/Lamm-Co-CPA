@@ -1,4 +1,3 @@
-
 import './App.css';
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -55,7 +54,7 @@ function App() {
             <div className="hero-content-main">
               <h1 className={`hero-main-heading${animate ? ' fade-in-bottom' : ''}`}>Lamm & Company CPA</h1>
               <h2 className={`hero-subheading${animate ? ' fade-in-bottom' : ''}`}>Your trusted CPA firm since 1989</h2>
-              <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but <strong>anywhere in the world</strong>. Six locations, one commitment: your financial success—<strong>wherever you are</strong>.</p>
+              <p className={`subtitle${animate ? ' fade-in-bottom' : ''}`}>Trusted advisors for businesses and individuals not only across Idaho, but <strong>anywhere in the world</strong>. Seven locations, one commitment: your financial success—<strong>wherever you are</strong>.</p>
               <div className={`hero-cta-group${animate ? ' fade-in-bottom' : ''}`}>
                 <Link to="/services" className="cta-btn">Explore Our Services</Link>
                 <Link to="/pay-bill" className="cta-btn cta-btn-secondary">Pay my bill</Link>
@@ -117,7 +116,7 @@ function App() {
               McCall
             </a>
             <a
-              href="https://www.google.com/search?q=Lamm+%26+Company+Boise+location&client=ms-android-att-us-rvc3&sca_esv=c70b30f9636752de&sxsrf=AKL5yDh5j84DPuhRy2mHhmB-ahtLZQsjsg%3A1794422553451&ei=Gbf0asKGG_yt0PEP4e_GoQM&biw=1536&bih=791&uact=5&oq=Lamm+%26+Company+Boise+location&gs_lp=Egxnd3Mtd2l6LXNlcnAiHUxhbW0gJiBDb21wYW55IEJvaXNlIGxvY2F0aW9uMgUQIRigATIFECEYoAEyBRAhGKABSOMkULgHWNQjcAF4AZABAJgBeaABuxWqAQQyMC45uAEDyAEA-AEBmAIeoAKgFqgCEMICBxAjGOoCGCfCAhAQIxjwBRieBhiiBxjqAhgnwgINEC4YxwEYrwEY6gIYJ8ICFxAAGIAEGIoFGJECGOcGGOoCGLQC2AEBwgIXEC4YgAQYigUYkQIY5wYY6gIYtALYAQHCAgQQIxgnwgIEEC4YJ8ICDhAAGIAEGIoFGJECGLQHwgILEAAYgAQYigUYkQLCAgsQLhiABBiKBRiRAsICCxAuGIAEGLEDGIMBwgIKEC4YgAQYigUYQ8ICDhAAGIAEGIoFGJECGLEDwgINEC4YgAQYigUYQxixA8ICExAuGIAEGIoFGEMYsQMYxwEY0QPCAhEQLhiABBiKBRiRAhjHARivAcICBRAAGIAEwgILEC4YgAQYxwEYrwHCAgUQLhiABMICCBAAGIAEGLQHwgIGEAAYFhgewgIIEAAYFhgeGArCAggQABiJBRiiBMICCBAAGIAEGKIEwgIFEAAY7wXCAgUQIRirApgDCvEF4-MGXiNF9HW6BgYIARABGAGSBwUxOS4xMaAH1usBsgcFMTguMTG4B5UWwgcGNi4yMS4zyAc-gAgB&sclient=gws-wiz-serp"
+              href="https://www.google.com/search?q=Lamm+%26+Company+Boise+location&client=ms-android-att-us-rvc3&sca_esv=c70b30f9636752de&sxsrf=AKL5yDh5j84DPuhRy2mHhmB-ahtLZQsjsg%3A1794422553451&ei=Gbf0asKGG_yt0PEP4e_GoQM&biw=1536&bih=791&uact=5&oq=Lamm+%26+Company+Boise+location&gs_lp=Egxnd3Mtd2l6LXNlcnAiHUxhbW0gJiBDb21wYW55IEJvaXNlIGxvY2F0aW9uMgUQIRigATIFECEYoAEyBRAhGKABSOMkULgHWNQjcAF4AZABAJgBeaABuxWqAQQyMC45uAEDyAEA-AEBmAIeoAKgFqgCEMICBxAjGOoCGCfCAhAQIxjwBRieBhiiBxjqAhgnwgINEC4YxwEYrwEY6gIYJ8ICFxAAGIAEGIoFGJECGOcGGOoCGLQC2AEBwgIXEC4YgAQYigUYkQIY5wYY6gIYtALYAQHCAgQQIxgnwgIEEC4YJ8ICDhAAGIAEGIoFGJECGLQHwgILEAAYgAQYigUYQ8ICDhAAGIAEGIoFGJECGLEDwgINEC4YgAQYigUYQxixA8ICExAuGIAEGIoFGEMYsQMYxwEY0QPCAhEQLhiABBiKBRiRAhjHARivAcICBRAAGIAEwgILEC4YgAQYxwEYrwHCAgUQLhiABMICCBAAGIAEGLQHwgIGEAAYFhgewgIIEAAYFhgeGArCAggQABiJBRiiBMICCBAAGIAEGKIEwgIFEAAY7wXCAgUQIRirApgDCvEF4-MGXiNF9HW6BgYIARABGAGSBwUxOS4xMaAH1usBsgcFMTguMTG4B5UWwgcGNi4yMS4zyAc-gAgB&sclient=gws-wiz-serp"
               target="_blank"
               rel="noopener noreferrer"
               className={`location-card${locationsVisible ? ' fade-in-bottom' : ''}`}
