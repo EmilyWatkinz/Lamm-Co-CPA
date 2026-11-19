@@ -2873,11 +2873,11 @@ html, body {
   }
 
   .review-carousel-arrow {
+    justify-self: center;
+    align-self: center;
     width: 42px;
     height: 42px;
-    justify-self: center;
   }
-
   .track-refund-layout {
     flex-direction: column;
   }
@@ -3566,25 +3566,26 @@ html, body {
 @media (max-width: 768px) {
   .footer {
     position: relative;
-    padding: 0.45rem 0.5rem 2.15rem;
-    font-size: 0.76rem;
-    line-height: 1.35;
-    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.8rem 0.75rem;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    white-space: normal;
+    border-radius: 1.25rem 1.25rem 0 0;
   }
 
   .footer .social-link {
-    position: absolute;
-    bottom: 0.32rem;
-    margin: 0;
-    padding: 0.1rem;
+    position: static;
+    display: inline-flex;
+    margin: 0 0.12rem;
+    padding: 0.15rem;
+    vertical-align: middle;
   }
 
-  .footer .social-link:nth-of-type(1) {
-    left: calc(50% - 38px);
-  }
-
-  .footer .social-link:nth-of-type(2) {
-    left: calc(50% + 8px);
+  .footer .social-icon {
+    width: 1.35rem;
+    height: 1.35rem;
   }
 }
 
@@ -3636,4 +3637,22 @@ html, body {
 .blog-resources-page .blog-page-wrap {
   flex: 1;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .employee-portal-resources-page .employee-portal-page {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .employee-portal-page .employee-portal-hero {
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
